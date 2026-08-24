@@ -25,15 +25,15 @@ PYTHONPATH=. python -m tools.valis_rebuild build \
 
 ```sh
 PYTHONPATH=. python -m tools.valis_rebuild verify \
-  --d88 build/reproduction/d88/valis_disk_a.d88 \
-  --rom build/reproduction/kanji/KANJI1.ROM
+  --d88 "build/reproduction/d88/valis_disk_a(K).d88" \
+  --rom "build/reproduction/kanji/KANJI1(K).ROM"
 ```
 
 동일 명령을 별도 출력 디렉터리에 한 번 더 실행하고 두 결과의 SHA-256을 비교합니다. 결과를 기준 파일과 대조할 때는 다음 명령을 사용합니다.
 
 ```sh
 PYTHONPATH=. python -m tools.valis_rebuild compare \
-  --built build/reproduction/d88/valis_disk_a.d88 \
+  --built "build/reproduction/d88/valis_disk_a(K).d88" \
   --reference /path/to/reference.d88 \
   --fail-on-diff
 ```

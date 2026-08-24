@@ -1,4 +1,4 @@
-"""End-to-end source-driven reproduction pipeline."""
+"""확정 소스에서 결과까지 수행하는 재현 빌드 파이프라인."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ def _require_input(path: Path, expected_hash: str, expected_size: int, label: st
     actual = hashlib.sha256(path.read_bytes()).hexdigest()
     if path.stat().st_size != expected_size or actual != expected_hash:
         raise ValueError(
-            f"{label} is not the reviewed original: size={path.stat().st_size}, sha256={actual}"
+            f"{label}가 검토된 원본과 다릅니다: 크기={path.stat().st_size}, sha256={actual}"
         )
 
 
@@ -60,7 +60,7 @@ def build_disk(root: Path, input_path: Path, output_dir: Path) -> dict:
     component_reports.extend(apply_raw_tables(image, _disk_tables(root)))
     component_reports.append(apply_hold_patch(image, root / "source/accepted/tables/gameover/hold-34-35.json"))
     output_dir.mkdir(parents=True, exist_ok=True)
-    output = output_dir / "valis_disk_a.d88"
+    output = output_dir / "valis_disk_a(K).d88"
     image.save(output)
     log = {
         "schema": "valis-reproduction-log/v1",
@@ -89,7 +89,7 @@ def build_kanji(root: Path, input_path: Path, output_dir: Path) -> dict:
     )
     output_bytes, glyph_report = build_rom(original, assignments)
     output_dir.mkdir(parents=True, exist_ok=True)
-    output = output_dir / "KANJI1.ROM"
+    output = output_dir / "KANJI1(K).ROM"
     output.write_bytes(output_bytes)
     log = {
         "schema": "valis-reproduction-log/v1",
