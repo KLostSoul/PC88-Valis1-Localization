@@ -11,8 +11,6 @@ PC-8801판 《몽환전사 바리스 1》 한글화의 통합 재현 빌드와 �
 - 통합 빌드 manifest: [`manifests/integrated-build.json`](manifests/integrated-build.json)
 - 전체 완료본 감사 manifest: [`manifests/full-archive-audit.json`](manifests/full-archive-audit.json)
 - 30개 분석문서 내용 대조 manifest: [`manifests/analysis-content-reconciliation.json`](manifests/analysis-content-reconciliation.json)
-- Block 1 분석: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
-- 배포 범위: [`docs/valis-block1-distribution-scope.md`](docs/valis-block1-distribution-scope.md)
 
 ## 보관 원칙
 
