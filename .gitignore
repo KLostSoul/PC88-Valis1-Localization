@@ -1,8 +1,9 @@
 # Do not accidentally commit original or derived game data.
 *.d88
 *.rom
+*.D88
+*.ROM
 *.ips
-!patches/*.ips
 *.bin
 *.img
 *.iso
@@ -13,6 +14,7 @@
 build/
 repro_out/
 local_inputs/
+source_build_inputs_20260824/
 *.pyc
 __pycache__/
 
