@@ -21,7 +21,7 @@
 - 원본 PC-88 D88 디스크 이미지
 - 원본 `KANJI1.ROM`
 
-원본 `KANJI1.ROM`은 `source/accepted/media/kanji1-layout.json`의 ROM 레이아웃을 기준으로 확인합니다.
+원본 D88은 `source/accepted/media/d88-layout.json`, 원본 `KANJI1.ROM`은 `source/accepted/media/kanji1-layout.json`의 레이아웃을 기준으로 확인합니다.
 
 두 파일은 해시와 크기를 먼저 확인합니다. 원본 바이트 가드가 맞지 않으면 해당 위치의 수정은 중단됩니다. 이 검사는 다른 버전의 롬에 조용히 패치를 적용하는 일을 막습니다.
 

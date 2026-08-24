@@ -6,7 +6,7 @@
 
 분석은 `QUASI88 0.7.4`의 디버그 기능을 이용했습니다.
 
-원본 `KANJI1.ROM`은 `source/accepted/media/kanji1-layout.json`의 ROM 레이아웃을 기준으로 확인합니다.
+원본 D88은 `source/accepted/media/d88-layout.json`, 원본 `KANJI1.ROM`은 `source/accepted/media/kanji1-layout.json`의 레이아웃을 기준으로 확인합니다.
 
 ## 빌드 구성
 
