@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "valis-reproduction-build"
 version = "0.1.0"
-description = "PC-88 무겐전사 바리스 1 한국어 한글패치 직접 바이너리 재현 빌드"
+description = "PC-88 몽환전사 바리스 1 한국어 한글패치 직접 바이너리 재현 빌드"
 requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
