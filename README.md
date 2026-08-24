@@ -1,82 +1,73 @@
-# PC-88 무겐전사 바리스 1 — 한국어 우선 안내
+# PC-88 무겐전사 바리스 1 한글패치 재현 빌드
 
-이 저장소는 영문 패치가 아니라 한국어 한글패치 재현 빌드입니다. 작업 설명·분석 근거·빌드 절차·검증 기준은 한국어를 기본으로 합니다. 영문 내용은 아래에 남겨 둔 보조 참고본입니다.
+이 저장소는 PC-88판 《무겐전사 바리스 1》의 한국어 한글패치를 원본 매체에서 다시 만드는 Python 기반 재현 빌드입니다.
 
-한국어 전체 안내는 [README.ko.md](README.ko.md), 상세 절차는 [직접 바이너리 재현 빌드](docs/ko/direct-binary-build.md), [분석 근거와 빌드 소스 대응표](docs/ko/evidence-and-source-map.md), [재현 빌드 검증 절차](docs/ko/reproducibility.md)를 기준으로 합니다.
+빌드는 사용자가 제공한 원본 D88과 `KANJI1.ROM`을 읽고, 분석과 디버거 확인을 거쳐 확정한 직접 바이트 표를 원본 복사본에 적용합니다. 완료본 D88·ROM이나 IPS를 빌드 입력으로 사용하지 않으며, 어셈블러로 새 코드를 조립하지 않습니다.
 
----
+## 빌드 구성
 
-# English reference — PC-88 Mugen Senshi Valis 1 reproduction build design
+- `analysis/`: 분석 근거 장부와 디버거 관찰 자료
+- `source/accepted/`: 원문·한글 번역·제어 토큰·직접 바이트·KANJI1 글리프 원천표
+- `tools/valis_rebuild/`: D88 처리기, 원본 바이트 검사기, 직접 기록기, ROM 생성기
+- `tests/`: 소스·구조·직렬화·통합 검증
+- `docs/`: 작업 문서
 
-This repository contains a source-first, direct-binary reproduction build. The original D88 and KANJI1 ROM are supplied at build time; copyrighted completed binaries and patches are comparison-only inputs and are not stored here. It does not assemble source: it applies reviewed literal bytes to verified original copies.
-
-The target is a mirror-style reproduction repository:
+## 빌드 원칙
 
 ```text
-manual evidence ledger
-        ↓ independent review
-accepted literal source tables
-        ↓ strict byte serializer
-local D88/ROM output
-        ↓ verify and optional comparison
-local reference only
+분석 근거와 디버거 확인
+        ↓ 수동 검토
+확정된 원문·한글 번역·토큰·직접 바이트 표
+        ↓ 원본 바이트 대조
+원본 D88/ROM 복사본에 직접 기록
+        ↓ 구조·해시·테스트 검증
+재현된 D88/ROM
 ```
 
-## Non-negotiable boundary
+자동 문서 추출, 자동 토큰 매핑, 주소 추정, 완료본 바이트의 소스 승격은 수행하지 않습니다. 빌더는 사람이 확정한 행만 검사하고 기록합니다.
 
-The completed ZIP, completed D88/ROM, IPS files, extracted BMP/PNG assets, and any other reference result are not build inputs and are not stored in GitHub. They may be consulted locally for comparison only.
+## 실행
 
-Automatic document extraction, token mapping, address guessing, correction inference, and promotion of generated tables are forbidden. Tools may validate an explicitly authored row or serialize an already accepted row; they may not create accepted project data.
-
-## Repository domains
-
-- `analysis/evidence-ledger.json`: manually recorded observations with document locations, literal bytes, address layer, and review state.
-- `source/accepted/release-baseline.json`: reviewed original and final hash contract for the closed v1.02 release.
-- `source/accepted/`: reviewed literal source data, including original-text/Korean-translation tables, token streams, raw byte tables, ASM observations, and 476 explicit KANJI glyph sources.
-- `tools/valis_rebuild/`: D88 parser, low-level codec, strict source gate, literal byte serializer, and staged CLI.
-- `tests/`: tests for gates, low-level invariants, source tables, and the integrated build.
-- `analysis/quarantine/`: previous automatic-extraction attempt, ignored and excluded from the build graph.
-
-## Commands
+저장소 루트에서 실행합니다.
 
 ```sh
 PYTHONPATH=. python -m tools.valis_rebuild source-lint
 PYTHONPATH=. python -m tools.valis_rebuild text-lint
-PYTHONPATH=. python -m tools.valis_rebuild export-original \
-  --d88 /path/to/user-supplied/original.d88 --out build/export-original
-PYTHONPATH=. python -m tools.valis_rebuild build-d88 \
-  --d88 /path/to/user-supplied/original.d88
-PYTHONPATH=. python -m tools.valis_rebuild build-rom \
-  --rom /path/to/user-supplied/KANJI1.ROM
+PYTHONPATH=. python -m unittest discover -s tests -v
+```
+
+원본 D88과 KANJI1 ROM을 지정해 빌드합니다.
+
+```sh
 PYTHONPATH=. python -m tools.valis_rebuild build \
-  --d88 /path/to/user-supplied/original.d88 \
-  --rom /path/to/user-supplied/KANJI1.ROM
+  --d88 /path/to/original.d88 \
+  --rom /path/to/KANJI1.ROM \
+  --out build/reproduction
+```
+
+출력을 검증합니다.
+
+```sh
 PYTHONPATH=. python -m tools.valis_rebuild verify \
   --d88 build/reproduction/d88/valis_disk_a.d88 \
   --rom build/reproduction/kanji/KANJI1.ROM
+```
+
+완료본과의 대조가 필요할 때만 로컬 비교 파일을 지정합니다.
+
+```sh
 PYTHONPATH=. python -m tools.valis_rebuild compare \
-  --built build/reproduction/result.d88 \
-  --reference /local/only/reference.d88
-# release comparison: fail unless byte-for-byte equal
-PYTHONPATH=. python -m tools.valis_rebuild compare \
-  --built build/reproduction/result.d88 \
-  --reference /local/only/reference.d88 \
+  --built build/reproduction/d88/valis_disk_a.d88 \
+  --reference /path/to/reference.d88 \
   --fail-on-diff
 ```
 
-`source-lint` reports the review state and verifies every accepted path exists. `build-d88` and `build-rom` independently verify the original-byte guards; `build` runs both components and writes separate logs. `export-original` is read-only structural inspection of the user-supplied original image; it creates no translation source rows.
+## 결과물과 보관 범위
 
-## Component acceptance order
+빌드 결과는 `build/` 아래에 생성합니다. 원본 D88·ROM, 완료본 ZIP·D88·ROM, IPS, 추출 이미지와 로컬 비교 결과는 저장소에 넣지 않습니다.
 
-1. Original D88/ROM geometry and hashes.
-2. Main event blocks 1–6, including literal control-token boundaries and physical sector data ranges.
-3. Game-over fixed segments 1–15 and scroll blocks 1–35, including marker handling.
-4. Ending segments 1–24, terminators, lengths, correction arithmetic, and physical mapping.
-5. Control-token registry and character/token table.
-6. KANJI1 slot/ROM assignments and separately supplied glyph sources.
-7. Debugger-derived entrypoints, branch targets, free-space observations, and literal byte changes.
-8. D88/ROM serializer, final hash verification, reproducibility logs, and integration tests.
+상세한 작업·검증 절차:
 
-The completed reference may be used only to audit the locally produced result; it is never an input to the build command.
-
-한국어 문서: [README.ko.md](README.ko.md), [직접 바이너리 재현 빌드 안내서](docs/ko/direct-binary-build.md), [분석 근거와 빌드 소스 대응표](docs/ko/evidence-and-source-map.md), [재현 빌드 검증 절차](docs/ko/reproducibility.md)
+- [직접 바이너리 재현 빌드 안내서](docs/direct-binary-build.md)
+- [분석 근거와 빌드 소스 대응표](docs/evidence-and-source-map.md)
+- [재현 빌드 검증 절차](docs/reproducibility.md)

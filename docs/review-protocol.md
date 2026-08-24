@@ -1,17 +1,13 @@
 # 수동 검토 절차
 
-검토 기록은 한국어로 남기는 것을 기본으로 합니다. 원본 바이트, 결과 바이트, 주소·섹터 위치, 원문·한글 번역, 제어 토큰, 근거 문서 위치를 서로 대조하고 독립 검토를 거친 행만 `source/accepted/`에 둡니다. 자동 추출·자동 매핑 결과는 검토 완료 자료가 아닙니다.
+원본 바이트, 결과 바이트, 주소·섹터 위치, 원문·한글 번역, 제어 토큰, 근거 문서 위치를 서로 대조하고 독립 검토를 거친 행만 `source/accepted/`에 둡니다.
 
----
+1. 분석 문서의 정확한 표·행·페이지·절을 확인합니다.
+2. 원본 D88/ROM 위치를 직접 읽고 바이트를 기록합니다.
+3. 문자·제어열·분기·종결자·패딩·그래픽 데이터 중 유형을 판정합니다.
+4. 실행 주소, D88 payload 오프셋, 길이, 저장 위치를 대조합니다.
+5. 완료본은 결과 대조에만 사용합니다.
+6. 검토된 리터럴 행과 근거 위치를 기록합니다.
+7. 검토를 마친 행만 확정 상태로 둡니다.
 
-The following order is mandatory for each component.
-
-1. Read the applicable Project document and identify the exact table/row/page or section.
-2. Read the original D88/ROM at the documented location and record the literal bytes and hash.
-3. Interpret the record boundary: character pair, control sequence, branch, terminator, padding, or graphic data.
-4. Calculate the runtime address, physical D88 data offset, length, and any reverse-storage arithmetic by hand from the documented values.
-5. Compare the result to the completed output only as a check. A disagreement is a conflict entry, not an automatic correction.
-6. Enter the reviewed literal source row and provenance into `source/accepted/`.
-7. A second review closes the row as `confirmed`; otherwise it remains `blocked`.
-
-No script may promote a row from `observed`, `derived`, or `conflict` to `confirmed`.
+자동 추출·자동 매핑 결과는 검토 완료 자료로 승격하지 않습니다.

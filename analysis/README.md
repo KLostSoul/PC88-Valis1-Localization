@@ -1,18 +1,9 @@
-# 분석 계층 — 수동 근거만 사용
+# 분석 계층
 
-이 디렉터리의 작업 설명과 판단 기준은 한국어가 기본입니다. 아래 영문 내용은 구조를 확인하기 위한 보조 참고본입니다.
+이 디렉터리는 조사 결과를 빌드 소스와 분리해 보관합니다.
 
----
+`evidence-ledger.json`은 사람이 유지하는 근거 장부입니다. 빌드에 사용되는 사실은 프로젝트 문서의 위치, 표·행·절 또는 바이너리 위치, 관찰한 바이트, 주소 계층, 검토 상태를 함께 기록합니다.
 
-This directory is the boundary between investigation and build source.
+`source/accepted/`에는 분석 자료에서 전사해 검토한 원문·한글 번역·토큰·직접 바이트 표가 있습니다. 도구는 형식과 연결을 검사할 수 있지만, 확정 소스 행이나 토큰 매핑을 추정하지 않습니다.
 
-`evidence-ledger.json` is a manually maintained ledger. Every fact that may become build input must identify the project document, section/table/row or binary location, the literal observed bytes, the address layer, and an independent review state.
-
-The accepted source tree contains explicit original-text/Korean-translation
-tables transcribed from the completion archive's analysis material. A parser
-may help validate a fixed table transcription or inspect a user-supplied
-original image, but it may not create an accepted source row, infer a token
-mapping, select a correction constant, or promote a completed output into a
-build input.
-
-The previous automatic extraction attempt is quarantined under `analysis/quarantine/` and is ignored by Git. It is not part of the new build graph.
+이전 자동 추출 자료는 `analysis/quarantine/`에 격리되어 빌드 경로에서 제외됩니다.

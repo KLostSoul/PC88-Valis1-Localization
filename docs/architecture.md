@@ -1,36 +1,19 @@
-# 계층형 구조
+# 재현 빌드 계층 구조
 
-한국어 한글패치 재현 빌드는 원본 매체 검증, 수동 확정 소스, Python 직접 기록, 출력 검증의 계층으로 구성됩니다. ASM은 관찰 기록이며 어셈블러 빌드 단계가 아닙니다.
+이 한글패치 재현 빌드는 원본 매체 검증, 수동 확정 소스, Python 직접 기록, 출력 검증의 계층으로 구성됩니다. ASM 파일은 디버거 관찰 기록이며 어셈블러 빌드 단계가 아닙니다.
 
----
+## 분석 계층
 
-## Analysis layer
+`analysis/evidence-ledger.json`에는 무엇을 어디에서 관찰했고 어떤 검토를 거쳤는지 기록합니다. 기록되어 있다는 이유만으로 빌드 소스가 되지는 않습니다.
 
-`analysis/evidence-ledger.json` records what was observed, where it was observed, and who reviewed it. A fact is not buildable merely because a script can parse it.
+## 확정 소스 계층
 
-## Accepted source layer
+`source/accepted/`에는 검토가 끝난 리터럴 바이트와 대응표를 둡니다. 모든 행은 분석 문서와 원본 D88/ROM 위치의 근거를 유지합니다.
 
-`source/accepted/` contains literal bytes and maps only after manual review. Every source row must retain provenance to a Project document and an original D88/ROM location. Generated output, guessed mappings, and reference-only data are rejected.
+## 직렬화·빌드 계층
 
-## Serialization layer
+D88 파서는 트랙·섹터·payload·실제 파일 오프셋을 확인합니다. 기록기는 명시적으로 제공된 old/new 값만 원본 복사본에 씁니다. 주소나 대응표를 자동으로 찾지 않습니다.
 
-The D88 parser understands track pointers, sector headers, payload lengths, and physical file-data offsets. It never rewrites sector headers or gaps. The low-level reverse codec is available for explicitly supplied maps; it does not discover maps.
+## 검증 계층
 
-## Build layer
-
-The CLI calls the source gate before opening a build input. If the ledger,
-accepted manifest, or fixed text-source index is invalid, the command stops.
-Each accepted component is serialized only from its explicit source table.
-
-The current implementation has deterministic serializers for gameover,
-ending, ERROR 07, event blocks 1–6, logo raw tables, hold bytes, and KANJI1.
-`text-lint` is called by the build gate so the original/translation source
-tables cannot silently disappear from a build revision.
-
-## Verification layer
-
-Verification checks structure, old-value guards, duplicate destinations,
-terminators, lengths, round trips, and deterministic hashes. Reference
-comparison is a separate read-only operation; `compare --fail-on-diff` is the
-exact-release gate and is expected to fail while the documented baseline
-conflicts remain.
+검증 단계는 D88 구조, 원본 바이트 가드, 중복 목적지, 종결자, 길이, 재파싱, 결정적 해시를 확인합니다. 결과 비교는 별도의 읽기 전용 작업입니다.

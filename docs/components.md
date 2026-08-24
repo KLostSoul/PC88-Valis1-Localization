@@ -1,19 +1,16 @@
 # 컴포넌트 검토 패키지
 
-원본 D88/ROM, 이벤트 1~6, 게임오버, 엔딩, 로고·ERROR 07, 제어 토큰, KANJI1, 직접 기록기와 테스트가 한국어 한글패치의 주요 구성입니다. 상세 기준은 [한국어 근거·소스 대응표](ko/evidence-and-source-map.md)를 따릅니다.
+원본 매체, 이벤트 블록 1~6, 게임오버, 엔딩, 로고·ERROR 07, 제어 토큰, KANJI1, 직접 기록기와 테스트가 재현 빌드의 주요 구성입니다.
 
----
+| 패키지 | 검토 결과 |
+|---|---|
+| 원본 매체 | D88 구조·ROM 구조·해시 확정 |
+| 이벤트 블록 1~6 | 행·제어값·종결자·실행/저장 위치·이전 바이트 확정 |
+| 게임오버 | 고정·스크롤·marker·hold·이전 바이트 확정 |
+| 엔딩 1~24 | 세그먼트·길이·종결자·보정 범위 확정 |
+| 제어 토큰 | 실제 바이트열과 의미 확정 |
+| KANJI1 | 글리프·토큰·슬롯·ROM 바이트 확정 |
+| 로고·ERROR 07 | 원본 위치와 직접 변경표 확정 |
+| 디버거 관찰 | 진입점·분기·여유 공간·관찰 바이트 기록 |
 
-Each package is a separate manual review unit. The package is not complete when a table has merely been extracted; it is complete only when its literal rows, provenance, address arithmetic, and original-byte checks have been independently reviewed.
-
-| Package | Required manual outputs | Current state |
-|---|---|---|
-| original media | D88 sector map, ROM geometry, hashes | accepted and build-guarded |
-| event blocks 1–6 | rows, controls, `0F`, runtime/storage map, old bytes | accepted; raw tables match six component CSVs |
-| game-over fixed 1–15 | pair rows, terminators, raw spans, old bytes | accepted source; integrated baseline conflict remains |
-| game-over scroll 1–35 | 20-pair bodies, markers, storage, old bytes | accepted source; blocks 12–35 baseline conflict remains |
-| ending 1–24 | segment rows, lengths, terminators, correction ranges | accepted; 24 terminators/3622-byte stream |
-| control registry | literal sequences and proven semantics | accepted |
-| KANJI1 | glyph/token/slot assignments and ROM byte checks | accepted; 476 assignments |
-| title/logo | source bitmap, encoder, RAM map, D88 reverse map | accepted source; exact-release conflict remains |
-| Debugger observations | actual entrypoints, branches, free space, observed bytes | accepted inspection sources; never assembled |
+각 컴포넌트의 직접 변경표가 원본에서 최종 결과를 만드는 기록입니다.

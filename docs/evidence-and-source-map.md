@@ -1,6 +1,6 @@
 # 분석 근거와 빌드 소스 대응표
 
-이 문서는 “왜 이 방식으로 작업했는가”를 확인하기 위한 한국어 참고 문서입니다. 분석 문서의 관찰 결과와 실제 빌드에 사용되는 확정 소스를 구분하여 기록합니다.
+이 문서는 분석 문서의 관찰 결과와 실제 빌드에 사용되는 확정 소스를 구분하여 기록합니다.
 
 ## 1. 확정 절차
 
@@ -82,9 +82,6 @@ Python 직접 바이너리 기록
 
 ## 6. 관련 파일
 
-- 영문 설계: `docs/reproduction-design-v2.md`
-- 직접 바이너리 빌드: `docs/direct-binary-build.md`
-- 재현성 절차: `docs/reproducibility.md`
 - 확정 소스 목록: `source/accepted/source-manifest.json`
 - 근거 장부: `analysis/evidence-ledger.json`
 - 최종 계약: `source/accepted/release-baseline.json`

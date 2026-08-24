@@ -1,16 +1,13 @@
 # 분석 근거 상태
 
-한글패치의 분석 상태와 완료 판정은 한국어를 기준으로 관리합니다. 각 사실은 분석 문서·디버거 위치·리터럴 바이트·주소 층·검토 상태가 연결되어야 하며, 자동 추출 결과는 확정 소스가 아닙니다.
+재현 빌드는 v1.02 직접 바이너리 재현 기준으로 구성되어 있습니다.
 
----
+- 원본 D88의 크기·섹터 구조와 KANJI1 ROM의 크기·해시를 빌드 시 확인합니다.
+- 이벤트 1~6은 일본어 원문, 한글 번역, 토큰, raw 바이트를 보존합니다.
+- 게임오버는 고정·스크롤·marker·hold 자료를 보존합니다.
+- 엔딩은 24개 세그먼트와 종결자를 보존합니다.
+- 로고·ERROR 07·문자 토큰 소비 루틴·KANJI1 근거는 직접 기록표와 관찰 자료로 보존합니다.
+- 최종 바이트는 각 소유 컴포넌트 표에서 직접 생성합니다.
+- 완료본과 IPS는 로컬 비교 전용입니다.
 
-The repository is a closed `v1.02_direct_binary_reproduction` build.
-
-- Original D88 geometry and KANJI1 geometry are verified at build time by size and SHA-256.
-- Blocks 1–6 retain separate Japanese/original, Korean translation, token, and raw-byte sources.
-- Game-over retains fixed 1–15, scroll 1–35, marker, and hold sources; ending retains 24 independently delimited segments.
-- Logo, ERROR 07, token consumer, and KANJI1 direct-edit evidence remain explicit sources and debugger observations.
-- The final v1.02 values are now in their owning component tables: game-over rows/tokens, logo raw bytes, ERROR 07 bytes, and event rows. No post-component reconciliation table remains.
-- The completed ZIP and its binaries remain local comparison-only evidence.
-
-`source-lint`, the ten tests, input preimage checks, final-output hash checks, and optional local `compare --fail-on-diff` together form the release gate.
+`source-lint`, `text-lint`, 테스트, 원본 검사, 결과 해시 검사, 선택적 `compare --fail-on-diff`가 검증 문턱입니다.

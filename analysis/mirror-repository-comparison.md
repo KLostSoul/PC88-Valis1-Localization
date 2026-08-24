@@ -1,24 +1,15 @@
-# 영문 패치 저장소와의 구조 비교
+# 참고 저장소와의 구조 비교
 
-이 프로젝트의 기준 언어는 한국어입니다. 영문 패치 저장소는 구조만 참고하며 결과 바이너리나 소스를 복사하지 않습니다. 영문 설명은 이 문서 아래의 보조 참고 내용입니다.
+참고 저장소는 작업 구조를 확인하는 읽기 전용 대상입니다. 이 프로젝트는 참고 저장소의 코드·자료·결과 바이트를 빌드 소스로 복사하지 않습니다.
 
----
-
-Reference: `KLostSoul/PC88-Valis1-Localization` (read-only structural reference). It is not modified by this project and its code/data are not copied into this repository.
-
-The useful comparison is methodological: preserve original-media inputs, keep analysis separate from authored patch data, provide deterministic build commands, and verify a locally produced result. This Korean reproduction uses Python rather than the reference project's implementation language, and it uses debugger-derived direct binary edits rather than an assembler pipeline.
-
-| Requirement | This build |
+| 확인 항목 | 이 재현 빌드 |
 |---|---|
-| Original D88/ROM input gate | exact size and SHA-256 required |
-| Direct edit data | literal guarded D88 spans and 476 ROM glyph slots |
-| Text audit | Japanese original, Korean translation, tokens, and provenance are separate sources |
-| Debugger rationale | observation files only; never assembled |
-| Build entry point | `python -m tools.valis_rebuild build` |
-| Verification | source lint, 10 tests, output hashes, optional local byte comparison |
-| Completed media / IPS | local comparison-only; ignored and rejected as build inputs |
+| 원본 D88/ROM 검사 | 크기·구조·SHA-256 확인 |
+| 직접 수정 자료 | 원본 가드가 있는 D88 구간과 ROM 글리프 슬롯 |
+| 텍스트 대조 | 일본어 원문·한글 번역·토큰·근거를 별도 보존 |
+| 디버거 근거 | 관찰 기록만 보관하고 조립하지 않음 |
+| 빌드 | `python -m tools.valis_rebuild build` |
+| 검증 | 소스 검사·테스트·결과 해시·선택적 바이트 비교 |
+| 완료 매체·IPS | 로컬 비교 전용 |
 
-The completed v1.02 result is reproduced from the reviewed original inputs:
-
-- D88 SHA-256: `18e274dc730902f90e4d3939ad3ac2853c927d19baf896cee88e5b22321427b8`
-- KANJI1 SHA-256: `3a4ce60dc4a23d7918a8726b99c2192c9420313bab40c50880eea3a387243f45`
+기준 결과 해시는 `source/accepted/release-baseline.json`에 기록합니다.

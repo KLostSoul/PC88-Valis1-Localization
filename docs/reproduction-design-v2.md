@@ -1,58 +1,28 @@
-# 재현 빌드 설계 v2
+# 재현 빌드 설계
 
-이 설계의 주 언어는 한국어입니다. 목표는 완료본을 따라 만드는 것이 아니라, 완료본과 분석 자료에서 확인한 사실을 한국어 원문·번역·토큰·raw 소스로 정리하고 원본 매체에서 Python 직접 바이너리 수정으로 재현하는 것입니다. 영문 본문은 보조 참고본입니다.
+## 프로젝트 영역
 
----
+| 영역 | 내용 | 빌드 사용 |
+|---|---|---|
+| `analysis/` | 사람이 기록한 분석 근거와 검토 기록 | 근거 확인 |
+| `source/accepted/` | 리터럴 바이트·토큰·주소·텍스트 원천표 | 사용 |
+| 로컬 비교 영역 | 완료본·IPS·추출 이미지 | 사용하지 않음 |
 
-The repository is split into three non-overlapping domains.
+## 처리 흐름
 
-| Domain | Contents | May feed build? |
-|---|---|---:|
-| `analysis/` | manually written evidence ledger and review notes | only after acceptance |
-| `source/accepted/` | literal, reviewed bytes/tokens/maps with provenance | yes |
-| local reference workspace | completed ZIP, completed D88/ROM, IPS, extracted images | no |
+원본 D88/ROM을 읽기 전용으로 검사하고, 분석 근거와 원본 바이트를 대조한 뒤, 검토된 원천표만 직접 기록기에 전달합니다. 기록기는 원본 복사본에 명시된 old/new 바이트를 쓰고 결과를 다시 파싱·검증합니다.
 
-## Required flow
+## 원천 행의 계약
+
+각 행은 컴포넌트, 실행 주소 또는 물리 위치, 이전 값, 새 값, 길이, 근거 위치, 검토 상태를 가져야 합니다. 이전 값 누락, 중복 오프셋, 모호한 주소, 추정 토큰은 빌드 오류입니다.
+
+## 명령
 
 ```text
-original D88/ROM ──read-only inspect──► evidence ledger
-project documents ──manual cross-check─► evidence ledger
-ledger + original bytes ──independent review──► source/accepted
-source/accepted ──strict lint──► literal byte serializer
-literal byte serializer ──round-trip verify──► local D88/ROM
-local result ──optional comparison──► local reference only
+PYTHONPATH=. python -m tools.valis_rebuild source-lint
+PYTHONPATH=. python -m tools.valis_rebuild text-lint
+PYTHONPATH=. python -m tools.valis_rebuild build --d88 /path/to/original.d88 --rom /path/to/KANJI1.ROM
+PYTHONPATH=. python -m tools.valis_rebuild verify --d88 build/reproduction/d88/valis_disk_a.d88 --rom build/reproduction/kanji/KANJI1.ROM
 ```
 
-The completed archive is an oracle for checking a hypothesis, never a producer of source rows. The builder has no code path that opens a ZIP, IPS, completed image, or reference directory.
-
-## Source row contract
-
-Every accepted literal row must contain:
-
-```json
-{
-  "id": "ending.seg01.byte000",
-  "component": "ending_1_24",
-  "runtime_address": "0x4B6A",
-  "d88_data_offset": "0x5A25",
-  "old_value": "0x00",
-  "new_value": "0x00",
-  "token": "hangul_base_code",
-  "terminator": false,
-  "source_documents": ["Valis Project N.docx"],
-  "source_location": "table 1, row 42",
-  "literal_observation": "document row and original-byte read agree",
-  "review": {"status": "confirmed", "reviewer": "", "date": ""}
-}
-```
-
-The example is a schema illustration, not accepted project data. Missing `old_value`, duplicate offsets, ambiguous maps, unresolved conflicts, and inferred token values are hard errors.
-
-## Stages
-
-- `source-lint`: validate the ledger and accepted-source provenance; never generate rows.
-- `export-original`: record read-only D88 sector topology and hashes from a user-supplied original image.
-- Debugger listings are observations only; literal old/new byte tables are the only disk write source.
-- `build`: require an accepted manifest, then serialize literal source bytes into the original image.
-- `verify`: parse the result, check old/new guards, address maps, length/terminator closure, and deterministic hashes.
-- `compare`: optional local-only byte comparison with a reference result; its bytes are never imported.
+완료본 비교는 선택적 읽기 전용 작업이며, 비교 결과로 원천표를 자동 갱신하지 않습니다.
