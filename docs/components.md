@@ -1,4 +1,8 @@
-# Component review packages
+# 컴포넌트 검토 패키지
+
+원본 D88/ROM, 이벤트 1~6, 게임오버, 엔딩, 로고·ERROR 07, 제어 토큰, KANJI1, 직접 기록기와 테스트가 한국어 한글패치의 주요 구성입니다. 상세 기준은 [한국어 근거·소스 대응표](ko/evidence-and-source-map.md)를 따릅니다.
+
+---
 
 Each package is a separate manual review unit. The package is not complete when a table has merely been extracted; it is complete only when its literal rows, provenance, address arithmetic, and original-byte checks have been independently reviewed.
 

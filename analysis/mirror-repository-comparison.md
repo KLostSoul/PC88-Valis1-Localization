@@ -1,4 +1,8 @@
-# English localization repository comparison
+# 영문 패치 저장소와의 구조 비교
+
+이 프로젝트의 기준 언어는 한국어입니다. 영문 패치 저장소는 구조만 참고하며 결과 바이너리나 소스를 복사하지 않습니다. 영문 설명은 이 문서 아래의 보조 참고 내용입니다.
+
+---
 
 Reference: `KLostSoul/PC88-Valis1-Localization` (read-only structural reference). It is not modified by this project and its code/data are not copied into this repository.
 

@@ -1,4 +1,8 @@
-# Evidence status
+# 분석 근거 상태
+
+한글패치의 분석 상태와 완료 판정은 한국어를 기준으로 관리합니다. 각 사실은 분석 문서·디버거 위치·리터럴 바이트·주소 층·검토 상태가 연결되어야 하며, 자동 추출 결과는 확정 소스가 아닙니다.
+
+---
 
 The repository is a closed `v1.02_direct_binary_reproduction` build.
 

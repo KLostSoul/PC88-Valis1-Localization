@@ -1,23 +1,15 @@
-# Accepted source boundary
+# 확정 소스 경계
 
-This directory contains only reviewed, literal source data. Text sources keep
-the original text and Korean translation in separate fields, alongside the
-explicit token/control-byte sequence, address ranges, and D88 raw-byte table.
-The event text tables, the Korean verification tables, and the ending 24-row
-text table are separate files; no one is regenerated from another.
-The builder consumes those tables and never regenerates them from a completed
-image.
+이 디렉터리는 한국어 한글패치 재현 빌드에 실제로 사용되는 검토 완료 리터럴 소스만 보관합니다. 영문 설명은 보조 참고이며, 원문·한글 번역·제어 바이트·주소 범위·D88 raw 표는 각각 명시적으로 유지합니다.
 
-A source file may be placed here only after:
+문장 표, 한국어 검증 표, 엔딩 24행 표는 서로 다른 파일로 보존하며 한 표를 다른 표에서 다시 생성하지 않습니다. 빌더는 이 확정 표를 읽을 뿐 완료본 이미지에서 새 표를 추출하거나 자동 매핑하지 않습니다.
 
-1. the corresponding original D88/ROM bytes have been inspected;
-2. the project document and exact table/row/page location are recorded;
-3. token/control boundaries, terminators, lengths, and physical storage are written literally;
-4. every component table is updated to the reviewed final release byte value;
-5. an independent review marks the manifest component `accepted`.
+파일은 다음 조건을 모두 충족한 뒤에만 이 디렉터리에 둘 수 있습니다.
 
-The builder fails if the manifest is not accepted, an accepted path is
-missing, a source row is not guarded by the supplied original byte, a literal
-span preimage does not match the preceding component state, or the final hash
-does not equal the release baseline. A completed binary, IPS, PNG/BMP/PSD, or
-project-source document is never a build input.
+1. 대응하는 원본 D88/ROM 바이트를 직접 확인한다.
+2. 근거 문서와 정확한 표·행·페이지 위치를 기록한다.
+3. 토큰/제어 경계, 종결자, 길이, 물리 저장 위치를 리터럴 값으로 적는다.
+4. 모든 컴포넌트 표를 검토된 최종 릴리스 바이트로 갱신한다.
+5. 독립 검토 후 매니페스트 컴포넌트를 `accepted`로 표시한다.
+
+매니페스트가 승인되지 않았거나, 확정 경로가 없거나, 원본 바이트 가드가 없는 행이 있거나, 리터럴 범위의 이전 바이트가 앞선 컴포넌트 상태와 다르거나, 최종 해시가 릴리스 기준과 다르면 빌드는 실패합니다. 완료 바이너리·IPS·PNG/BMP/PSD·프로젝트 원문 문서는 빌드 입력이 아닙니다.

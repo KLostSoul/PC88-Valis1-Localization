@@ -1,4 +1,12 @@
-# PC-88 Mugen Senshi Valis 1 — reproduction build design
+# PC-88 무겐전사 바리스 1 — 한국어 우선 안내
+
+이 저장소는 영문 패치가 아니라 한국어 한글패치 재현 빌드입니다. 작업 설명·분석 근거·빌드 절차·검증 기준은 한국어를 기본으로 합니다. 영문 내용은 아래에 남겨 둔 보조 참고본입니다.
+
+한국어 전체 안내는 [README.ko.md](README.ko.md), 상세 절차는 [직접 바이너리 재현 빌드](docs/ko/direct-binary-build.md), [분석 근거와 빌드 소스 대응표](docs/ko/evidence-and-source-map.md), [재현 빌드 검증 절차](docs/ko/reproducibility.md)를 기준으로 합니다.
+
+---
+
+# English reference — PC-88 Mugen Senshi Valis 1 reproduction build design
 
 This repository contains a source-first, direct-binary reproduction build. The original D88 and KANJI1 ROM are supplied at build time; copyrighted completed binaries and patches are comparison-only inputs and are not stored here. It does not assemble source: it applies reviewed literal bytes to verified original copies.
 

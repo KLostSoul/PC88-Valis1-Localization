@@ -1,4 +1,8 @@
-# Evidence → direct byte → verification map
+# 분석 근거 → 직접 바이트 → 검증 대응표
+
+한국어 대응표는 [분석 근거와 빌드 소스 대응표](ko/evidence-and-source-map.md)를 기준으로 합니다. 영문 내용은 보조 참고본입니다. 원문·한글 번역·제어 토큰·raw 변경 행은 사람이 확정한 뒤 원본 바이트 가드와 함께 빌드에 사용됩니다.
+
+---
 
 This index lets a reviewer trace every accepted class of modification without placing copyrighted completed media in the repository. The completion archive is consulted locally; the repository stores only literal reviewed source, provenance paths/table-row references, and hashes.
 

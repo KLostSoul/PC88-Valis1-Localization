@@ -1,4 +1,8 @@
-# Direct-binary reproduction method
+# 직접 바이너리 재현 방식
+
+이 문서의 주 설명은 [한국어 직접 바이너리 재현 빌드 안내서](ko/direct-binary-build.md)입니다. 아래 영문 내용은 보조 참고본이며, 한글패치 작업 기준은 한국어 문서를 따릅니다.
+
+---
 
 This is not an assembler build and does not derive source from a completed image at build time. The builder copies the reviewed original D88 and KANJI1, then applies literal, guarded byte records. Debugger/disassembly material records why a location is safe to change; it is not assembled or injected.
 

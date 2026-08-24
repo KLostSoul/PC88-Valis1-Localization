@@ -1,4 +1,8 @@
-# Reproducibility protocol
+# 재현 빌드 검증 절차
+
+한국어 기준 절차는 [한국어 재현 빌드 검증 절차](ko/reproducibility.md)입니다. 아래 영문은 보조 참고본입니다. 원본 D88/ROM → 확정 소스 표 → Python 직접 기록 → 재파싱·해시·테스트 순서를 지키며, 완료본이나 IPS는 빌드 입력으로 사용하지 않습니다.
+
+---
 
 Reproducibility begins only after source acceptance.
 

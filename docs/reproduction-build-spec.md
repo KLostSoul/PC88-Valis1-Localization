@@ -1,4 +1,10 @@
-# Mugen Senshi Valis 1 — mirror-style reproduction build specification
+# 무겐전사 바리스 1 — 미러형 재현 빌드 사양
+
+이 한글패치 저장소의 기본 사양은 한국어로 해석합니다. 원본 D88/ROM 검증, 분석 근거와 확정 소스의 분리, 이벤트 1~6·게임오버·엔딩·로고·ERROR 07·KANJI1의 직접 바이너리 기록, 재파싱·해시·10개 통합 테스트가 필수입니다. 완료본은 로컬 비교 전용이고 어셈블러·IPS·자동 매핑은 빌드 경로에 없습니다.
+
+상세 한국어 기준은 [직접 바이너리 재현 빌드](ko/direct-binary-build.md), [근거·소스 대응표](ko/evidence-and-source-map.md), [검증 절차](ko/reproducibility.md)입니다. 아래 영문 사양은 부가 참고본입니다.
+
+---
 
 ## 1. 목적과 경계
 

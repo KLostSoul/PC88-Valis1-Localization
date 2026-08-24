@@ -1,4 +1,8 @@
-# Reproduction build design v2
+# 재현 빌드 설계 v2
+
+이 설계의 주 언어는 한국어입니다. 목표는 완료본을 따라 만드는 것이 아니라, 완료본과 분석 자료에서 확인한 사실을 한국어 원문·번역·토큰·raw 소스로 정리하고 원본 매체에서 Python 직접 바이너리 수정으로 재현하는 것입니다. 영문 본문은 보조 참고본입니다.
+
+---
 
 The repository is split into three non-overlapping domains.
 
