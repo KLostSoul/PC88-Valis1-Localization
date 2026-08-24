@@ -12,11 +12,6 @@ PC-8801판 《몽환전사 바리스 1》 한글화의 통합 재현 빌드와 �
 - 전체 완료본 감사 manifest: [`manifests/full-archive-audit.json`](manifests/full-archive-audit.json)
 - Block 1 분석: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
 - 배포 범위: [`docs/valis-block1-distribution-scope.md`](docs/valis-block1-distribution-scope.md)
-- 이전 저작권 보수형 분석 압축본: [`evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip`](evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip)
-- 계보 등록부: [`manifests/block1_lineage_register.csv`](manifests/block1_lineage_register.csv)
-- 충돌 등록부: [`manifests/block1_conflict_register.csv`](manifests/block1_conflict_register.csv)
-- 입력 재배포 범위표: [`manifests/block1_source_inventory.csv`](manifests/block1_source_inventory.csv)
-- 압축본 내부 SHA-256 목록: [`manifests/block1_file_manifest.sha256`](manifests/block1_file_manifest.sha256)
 
 ## 보관 원칙
 
@@ -40,4 +35,4 @@ python3 -m unittest discover -s tests -v
 
 실제 빌드는 [`docs/integrated-reproduction-build.md`](docs/integrated-reproduction-build.md)의 원본 입력 해시와 명령을 따른다. 원본 해시가 다르면 도구가 중지하며, 원본을 자동으로 찾거나 다운로드하지 않는다.
 
-현재 상태: 통합 IPS·Python 재현·파일 수준 검증은 저장소에 고정했고, QUASI88의 실제 화면/장면 전환 검증은 사용자의 로컬 실행 gate로 분리했다.
+현재 상태: 통합 IPS·Python 재현·전체 완료본 감사·정리된 통합 분석은 저장소에 고정했고, QUASI88의 실제 화면/장면 전환 검증은 사용자의 로컬 실행 gate로 분리했다.

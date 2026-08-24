@@ -1,7 +1,0 @@
-source_group,analysis_role,representative_content,redistribution_status,reason
-block1_archive,primary_input,uploaded Block 1 archive and nested packages,excluded,contains game data and derivative patch assets
-analysis_documents,interpretive_input,Block 1 detailed analysis and 30-document integrated analysis,excluded from public archive,may contain extensive game-derived text or data
-lineage_register,public metadata,dated counts tokens boundaries and verification scope,included,high-level provenance only
-conflict_register,public metadata,conflicting counts tokens boundaries and review blockers,included,high-level audit record only
-repository_analysis,public original work,new synthesis in MD,included,original analysis and distribution guidance
-render_outputs,build artifact,local DOCX render PNG/PDF,excluded,temporary verification output

@@ -1,9 +1,0 @@
-field,evidence_a,evidence_b,canonical_storage_rule
-text_count,513,525 and 540,keep by dated lineage; never auto-merge
-control_count,initial manifest 129,follow-up lineages 138,record the difference; do not repair by inference
-space_token,E8 0B,18 12,record per lineage; game-correct value still needs independent runtime check
-end_boundary,0x9C63=0F,0x9C7B=0F and 0x9C99=0F,record per lineage; do not reuse one table for another
-glyph_identity,빨/빌/바/랄게 at different slots and ROMs,latest orange rows,keep ROM hash and token context with each record
-translation_split,…バ→…바 and カみたい…→보 같이…,semantic meaning not proven by byte roundtrip,keep as translation-review blocker
-status_label,document-local 확정,notes saying actual byte confirmation needed,lower to independent verification required
-completion_label,completed/final bundle names,missing emulator-wide proof,do not call production release

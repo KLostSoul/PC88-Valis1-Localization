@@ -1,7 +1,0 @@
-lineage,date,source_area,claimed_text_count,claimed_control_count,space_token,end_token,verification_scope,status
-initial_513,2026-05-20,01_initial_513_2026-05-20,513,129,E8 0B,0x9C63=0F,file roundtrip and byte changes,historical lineage; do not merge
-completed_513,2026-05-22,02_control_relocation_2026-05-22_to_24,513,138,E8 0B,0x9C63=0F,bundle-local D88/ROM/IPS,historical lineage; conflicts preserved
-typofix_2022,2026-05-22,02_control_relocation_2026-05-22_to_24,513,138,variant,0x9C63=0F,typofix glyph and D88 patch,historical lineage; independent result
-direct157,2026-05-23,03_mouth_direct157_2026-05-23,not a text lineage,not a text lineage,variant,variant,157 direct mouth changes and 49 deferred,partial application
-repatch_525,2026-05-24,02_control_relocation_2026-05-22_to_24,525,138,variant,0x9C7B=0F,two-block formula and D88 roundtrip,extended lineage; separate end boundary
-orange_540,2026-05-28,04_latest_verification_2026-05-28,540,138,18 12,0x9C99=0F,CSV/JSON/IPS/D88 file-level consistency,latest file lineage; runtime screen unverified
