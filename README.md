@@ -70,3 +70,5 @@ PYTHONPATH=. python -m tools.valis_rebuild compare \
 8. D88/ROM serializer, final hash verification, reproducibility logs, and integration tests.
 
 The completed reference may be used only to audit the locally produced result; it is never an input to the build command.
+
+한국어 문서: [README.ko.md](README.ko.md), [직접 바이너리 재현 빌드 안내서](docs/ko/direct-binary-build.md), [분석 근거와 빌드 소스 대응표](docs/ko/evidence-and-source-map.md), [재현 빌드 검증 절차](docs/ko/reproducibility.md)
