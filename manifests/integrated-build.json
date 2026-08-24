@@ -1,0 +1,51 @@
+{
+  "build": "PC-8801 Valis 1 integrated 1.02",
+  "source_archive": {
+    "name": "Valis 1(1).zip",
+    "sha256": "49f6f6a9c3a7f2e787200d7b9b12ca8de0dd31315ebbb8c81197fadb5dd3ec3d",
+    "distribution": "local input only"
+  },
+  "inputs": {
+    "disk_a_original": {
+      "size": 414992,
+      "sha256": "7404998ee7e94e14d065a11e55bc26f7f8733202eec6774610a20a6d0b5a1fdf",
+      "provided_by_user": true
+    },
+    "kanji1_original": {
+      "size": 131072,
+      "sha256": "f6c1c5022fe5935f6dfa3eb919e51441e75191270b639edcb7938b3bce41f6a3",
+      "provided_by_user": true
+    }
+  },
+  "patches": {
+    "disk_a": {
+      "path": "patches/Valis_Korean_Disk_A_Patch_Ver_1.02.ips",
+      "sha256": "7f14c7b5d6961e234f702aa3e6007944ad3ec8231af225f6296ef3491e1eff53",
+      "records": 1282,
+      "patched_bytes": 23330
+    },
+    "kanji1": {
+      "path": "patches/VALIS_KANJI1_ROM_Patch_Ver_1.02.ips",
+      "sha256": "1cb66ed56faf20a29cf0ee860805a14fc7d9132f825c22fa846c3bb81a70bc7c",
+      "records": 2026,
+      "patched_bytes": 12621,
+      "changed_glyph_slots": 476
+    }
+  },
+  "outputs": {
+    "disk_a": {
+      "size": 414992,
+      "sha256": "18e274dc730902f90e4d3939ad3ac2853c927d19baf896cee88e5b22321427b8"
+    },
+    "kanji1": {
+      "size": 131072,
+      "sha256": "3a4ce60dc4a23d7918a8726b99c2192c9420313bab40c50880eea3a387243f45"
+    }
+  },
+  "scope": {
+    "originals_distributed": false,
+    "completed_images_distributed": false,
+    "emulator_screen_verified_here": false,
+    "source_lineages_auto_merged": false
+  }
+}

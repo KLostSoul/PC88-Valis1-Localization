@@ -1,15 +1,18 @@
 # PC-88 Valis 1 Localization
 
-PC-8801판 《몽환전사 바리스 1》 한글화의 분석 기록과 재현 가능한 작업 자료를 관리하는 저장소다.
+PC-8801판 《몽환전사 바리스 1》 한글화의 통합 재현 빌드와 분석 기록을 관리하는 저장소다.
 
 ## 현재 저장 범위
 
-현재는 Block 1 자료의 계보·충돌·실패 사유·파일 수준 검증을 정리해 기록한다. Block 1의 513·525·540자 패치는 서로 다른 계보이므로 자동 병합하지 않는다.
+전체 완료본 ZIP을 분석해 확인한 현행 통합 기준은 사용자가 직접 확보한 원본 Disk A/KANJI1에 1.02 IPS 두 개를 적용하는 방식이다. Block 1의 513·525·540자 중간 계보를 자동 병합하지 않고, 완료본의 통합 delta만 재현 빌드 입력으로 사용한다.
 
-- 새 통합 분석: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
-- 통합 MD 분석문서: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
+- 재현 빌드 절차: [`docs/integrated-reproduction-build.md`](docs/integrated-reproduction-build.md)
+- Python 빌더/검증기: [`tools/reproduce_valis1.py`](tools/reproduce_valis1.py)
+- 통합 빌드 manifest: [`manifests/integrated-build.json`](manifests/integrated-build.json)
+- 전체 완료본 감사 manifest: [`manifests/full-archive-audit.json`](manifests/full-archive-audit.json)
+- Block 1 분석: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
 - 배포 범위: [`docs/valis-block1-distribution-scope.md`](docs/valis-block1-distribution-scope.md)
-- 저작권 보수형 Block 1 분석 압축본: [`evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip`](evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip)
+- 이전 저작권 보수형 분석 압축본: [`evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip`](evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip)
 - 계보 등록부: [`manifests/block1_lineage_register.csv`](manifests/block1_lineage_register.csv)
 - 충돌 등록부: [`manifests/block1_conflict_register.csv`](manifests/block1_conflict_register.csv)
 - 입력 재배포 범위표: [`manifests/block1_source_inventory.csv`](manifests/block1_source_inventory.csv)
@@ -17,16 +20,24 @@ PC-8801판 《몽환전사 바리스 1》 한글화의 분석 기록과 재현 �
 
 ## 보관 원칙
 
-- 원본 파일은 바이트를 변경하지 않고 계보별로 분리한다.
-- D88·ROM·IPS·manifest·실행 결과는 동일 release unit인지 확인하기 전까지 하나의 최종본으로 부르지 않는다.
+- 원본 파일은 저장소에 넣지 않고, 바이트를 변경하지 않은 상태로 사용자 로컬 입력으로만 사용한다.
+- D88·ROM·IPS·manifest·실행 결과는 동일 release unit인지 확인한 뒤에만 통합 빌드로 부른다.
 - 문서 생성·roundtrip·IPS 파싱과 실제 에뮬레이터 화면 검증을 별도 gate로 관리한다.
 - 임시 추출물과 렌더링 결과는 저장소에 넣지 않는다.
-- 원본 게임 이미지·ROM·D88·패치 패키지·전체 번역/글리프 데이터는 저장소와 공개 압축본에서 제외한다.
+- 원본 게임 이미지·완성 D88/ROM·전체 패치 번들·전체 번역/글리프 데이터는 저장소에서 제외한다. 배포하는 것은 IPS delta와 재현 코드뿐이다.
 
 이 저장소의 구조와 문서화 방식은 [PC88-Mirrors-Localization](https://github.com/KLostSoul/PC88-Mirrors-Localization)의 소스/문서/검증자료 분리 원칙을 참고했다. 다만 Mirrors 프로젝트의 VWF·토큰 규격을 Valis 1에 자동 적용하지 않는다.
 
 실수로 원본·파생 게임 데이터를 추가하지 않도록 `.gitignore`에도 D88/ROM/IPS와 원본 패키지 경로를 제외하는 규칙을 둔다.
 
-## 현재 상태
+## 빠른 실행
 
-Block 1 자료 정리·분석·manifest 작성은 완료했다. 공개본은 분석문서와 메타데이터만 포함하며, 실제 게임에서 모든 문장·글리프·입 모양·장면 전환이 검증된 단일 배포본은 아직 없다.
+```bash
+python3 tools/reproduce_valis1.py inspect-ips disk patches/Valis_Korean_Disk_A_Patch_Ver_1.02.ips
+python3 tools/reproduce_valis1.py inspect-ips kanji patches/VALIS_KANJI1_ROM_Patch_Ver_1.02.ips
+python3 -m unittest discover -s tests -v
+```
+
+실제 빌드는 [`docs/integrated-reproduction-build.md`](docs/integrated-reproduction-build.md)의 원본 입력 해시와 명령을 따른다. 원본 해시가 다르면 도구가 중지하며, 원본을 자동으로 찾거나 다운로드하지 않는다.
+
+현재 상태: 통합 IPS·Python 재현·파일 수준 검증은 저장소에 고정했고, QUASI88의 실제 화면/장면 전환 검증은 사용자의 로컬 실행 gate로 분리했다.

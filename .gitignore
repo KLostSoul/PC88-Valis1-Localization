@@ -2,6 +2,7 @@
 *.d88
 *.rom
 *.ips
+!patches/*.ips
 *.bin
 *.img
 *.iso
@@ -9,6 +10,11 @@
 **/raw/
 **/extracted/
 **/render/
+build/
+repro_out/
+local_inputs/
+*.pyc
+__pycache__/
 
 # The only intentionally versioned archive is the copyright-safe analysis bundle.
 *.zip
