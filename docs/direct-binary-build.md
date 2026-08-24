@@ -38,7 +38,7 @@
 | 이벤트 블록 1~6 | `source/accepted/tables/events/`, `source/accepted/text/` | 원문·한글 번역과 최종 raw 바이트 |
 | 게임오버 | `gameover-fixed.jsonl`, `gameover-scroll.jsonl`, `gameover/hold-34-35.json` | 고정 15개와 스크롤 35개의 행·토큰·보류 영역 |
 | 엔딩 | `tables/ending/`, `text/ending-24.jsonl` | 24개 세그먼트, 종결자, 길이와 물리 위치 |
-| 로고 | `tables/logo/` | RAM 관찰값과 최종 raw 기록의 대응 |
+| 로고 | `tables/logo/`, `tables/logo/edit_layers/` | RAM 관찰값·PNG plane·최종 raw 기록의 대응 |
 | ERROR 07 | `tables/error07/` | 최종 명령 스트림 바이트와 입력 근거 |
 | 문자·칸지 | `tables/kanji/`, `kanji/glyphs/` | 476개 글리프와 슬롯·토큰·ROM 오프셋 |
 | 제어 토큰 | `tables/tokens/` | 제어 바이트와 일반 문자 바이트의 구분 |

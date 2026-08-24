@@ -55,6 +55,16 @@ class SourceComponentTests(unittest.TestCase):
             self.assertEqual(len(offsets), len(set(offsets)))
             self.assertTrue(all(row["raw_old"] and row["raw_new"] for row in rows))
 
+    def test_logo_source_map_points_to_supplied_png_layers(self):
+        source_map = ROOT / "source/accepted/tables/logo/source-map.csv"
+        with source_map.open(encoding="utf-8-sig", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        self.assertEqual(len(rows), 6)
+        for row in rows:
+            path = ROOT / "source/accepted/tables/logo" / row["edit_png"]
+            self.assertTrue(path.is_file(), path)
+            self.assertEqual(path.suffix.lower(), ".png")
+
     @unittest.skipUnless(ORIGINAL_D88.exists() and ORIGINAL_ROM.exists(), "original media is not supplied")
     def test_integrated_build_from_original_media(self):
         with tempfile.TemporaryDirectory() as directory:
