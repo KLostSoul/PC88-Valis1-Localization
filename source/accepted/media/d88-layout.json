@@ -1,7 +1,7 @@
 {
   "schema": "valis-d88-layout/v1",
   "input": {
-    "name": "Mugen Senshi Valis Disk A original D88",
+    "name": "Mugen Senshi Valis (1986)(Nihon Telenet)(Disk 1 of 2)(2).d88",
     "sha256": "7404998ee7e94e14d065a11e55bc26f7f8733202eec6774610a20a6d0b5a1fdf",
     "size": 414992
   },
@@ -11,5 +11,5 @@
     "track_index_2_79": {"sector_count": 5, "sector_size": 1024}
   },
   "verified": {"sector_count": 422, "flat_payload_size": 407552},
-  "write_policy": "D88 file data offsets only; sector headers and gaps are immutable"
+  "write_policy": "D88 파일 데이터 오프셋만 기록하며 섹터 헤더와 빈 영역은 변경하지 않음"
 }
