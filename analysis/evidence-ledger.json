@@ -1,6 +1,6 @@
 {
   "schema": "valis-manual-evidence-ledger/v2",
-  "status": "candidate_with_reference_conflicts",
+  "status": "v1.02_closed_release",
   "policy": {
     "automatic_extraction_is_not_evidence": true,
     "automatic_mapping_is_forbidden": true,
@@ -121,15 +121,15 @@
       "review": {"status": "confirmed", "reviewer": "evidence-ledger review pass", "date": "2026-08-24"}
     },
     {
-      "id": "INTEGRATED-BASELINE-CONFLICT",
+      "id": "REL-102-COMPONENT-CLOSURE",
       "component": "integrated_release",
-      "assertion": "The dated component tables and the later integrated comparison image are not one byte-identical version lock.",
-      "source_documents": ["04_통합_정리-20260822-0811_분석문서.docx", "02_바리스_로고_로드_분석-20260822-0817_분석문서.docx", "Valis Korean Disk A Patch Ver 1.02 local comparison"],
-      "source_location": "analysis/reproduction-status.json and local compare report",
-      "literal_observation": "Current source build SHA a18c1c... differs from local comparison SHA 18e274... by 6397 file bytes; ending and event block 6 match while gameover/logo/error07 and small event bytes do not.",
+      "assertion": "The final v1.02 bytes have been incorporated into their owning component tables, so the component build itself closes the release state.",
+      "source_documents": ["Valis1_PC88_Localization_Skills_IPS_Only_2026-08-09/skills/reproduce-valis1-pc88-ko/references/verified-artifacts.md", "Valis_30개_통합_분석문서.docx"],
+      "source_location": "Disk A v1.02 closed-release verification; final component patch-table updates",
+      "literal_observation": "Final corrections are now owned by source tables: 24 game-over scroll token rows, 7,521 logo raw-byte rows, 11 event raw-byte rows, and 11 ERROR 07 raw-byte rows. Building only those component tables yields SHA-256 18e274dc730902f90e4d3939ad3ac2853c927d19baf896cee88e5b22321427b8.",
       "address_layer": "integrated_d88_file_data",
-      "status": "conflict",
-      "review": {"status": "blocked", "reviewer": "evidence-ledger review pass", "date": "2026-08-24"}
+      "status": "confirmed",
+      "review": {"status": "confirmed", "reviewer": "v1.02 component-source review", "date": "2026-08-25"}
     }
   ]
 }

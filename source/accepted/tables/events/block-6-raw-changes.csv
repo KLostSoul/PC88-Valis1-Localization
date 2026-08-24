@@ -1,4 +1,4 @@
-﻿runtime_addr,row,kind,slot,char,row_addr,byte_index_in_row,decoded_old,decoded_new,disk_offset,raw_old,raw_new,payload_start,decode_key,segment_index,fill
+runtime_addr,row,kind,slot,char,row_addr,byte_index_in_row,decoded_old,decoded_new,disk_offset,raw_old,raw_new,payload_start,decode_key,segment_index,fill
 0x969B,8,문자,1,이,0x969B~0x969C,0,38,98,0x1DB54,2B,8B,0x1D770,0x28,0x01B,e2f0d9
 0x969C,8,문자,1,이,0x969B~0x969C,1,19,DE,0x1DB53,0D,D2,0x1D770,0x28,0x01C,e2f0d9
 0x969D,9,문자,2,것,0x969D~0x969E,0,C8,F8,0x1DB52,BD,ED,0x1D770,0x28,0x01D,e2f0d9

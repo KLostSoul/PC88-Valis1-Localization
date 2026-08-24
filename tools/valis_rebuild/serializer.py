@@ -110,3 +110,4 @@ def apply_hold_patch(image: D88Image, path: str | Path) -> dict:
         raise BuildError(f"hold raw_old mismatch at 0x{offset:X}: table={old:02X} input={actual:02X}")
     image.data[offset] = new
     return {"component": record["component"], "writes": 1, "changed": int(old != new)}
+

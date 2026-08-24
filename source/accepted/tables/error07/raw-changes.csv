@@ -82,17 +82,17 @@ error07,47,0x3179,4C,03,요,ERROR 07 table 6 final token row
 error07,48,0x3178,A1,6D,。,ERROR 07 table 6 final token row
 error07,48,0x3177,AE,50,。,ERROR 07 table 6 final token row
 error07,49,0x3176,58,41,[02],ERROR 07 table 6 final token row
-error07,50,0x3175,A0,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x3174,69,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x3173,02,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x3172,A8,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x3171,94,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x3170,5E,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x316F,86,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x316E,5F,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x316D,78,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x316C,5B,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
-error07,50,0x316B,4C,00,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x3175,A0,40,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x3174,69,41,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x3173,02,42,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x3172,A8,43,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x3171,94,44,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x3170,5E,45,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x316F,86,46,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x316E,5F,47,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x316D,78,48,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x316C,5B,49,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
+error07,50,0x316B,4C,4A,00,ERROR 07 table 6 unused tail; range resolved from row 49 adjacency
 error07_dynamic_destination,1,0x3341,2F,2C,2C,ERROR 07 table 3 dynamic destination operand
 error07_dynamic_destination,2,0x333B,26,23,23,ERROR 07 table 3 dynamic destination operand
 error07_dynamic_destination,3,0x3332,2F,2C,2C,ERROR 07 table 3 dynamic destination operand

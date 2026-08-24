@@ -2,7 +2,7 @@
   "schema": "valis-accepted-source-manifest/v2",
   "status": "accepted",
   "buildable": true,
-  "release_status": "candidate_with_reference_conflicts",
+  "release_status": "v1.02_direct_binary_reproduction",
   "policy": {
     "source_kind": "manually reviewed literal data transcribed from completion-archive analysis tables",
     "reference_inputs": false,
@@ -32,6 +32,7 @@
   ],
   "accepted_files": [
     {"path": "source/accepted/text/source-index.json", "review_ids": ["TXT-001"]},
+    {"path": "source/accepted/release-baseline.json", "review_ids": ["REL-102-BASELINE"]},
     {"path": "source/accepted/text/event-block-1.jsonl", "review_ids": ["TXT-EV1"]},
     {"path": "source/accepted/text/event-block-2.jsonl", "review_ids": ["TXT-EV2"]},
     {"path": "source/accepted/text/event-block-3.jsonl", "review_ids": ["TXT-EV3"]},

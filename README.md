@@ -1,6 +1,6 @@
 # PC-88 Mugen Senshi Valis 1 — reproduction build design
 
-This repository contains a source-first, manually reviewed reproduction build. The original D88 and KANJI1 ROM are supplied at build time; copyrighted completed binaries and patches are comparison-only inputs and are not stored here.
+This repository contains a source-first, direct-binary reproduction build. The original D88 and KANJI1 ROM are supplied at build time; copyrighted completed binaries and patches are comparison-only inputs and are not stored here. It does not assemble source: it applies reviewed literal bytes to verified original copies.
 
 The target is a mirror-style reproduction repository:
 
@@ -23,7 +23,7 @@ Automatic document extraction, token mapping, address guessing, correction infer
 ## Repository domains
 
 - `analysis/evidence-ledger.json`: manually recorded observations with document locations, literal bytes, address layer, and review state.
-- `analysis/reproduction-status.json`: source-table counts, local comparison hashes, and explicit unresolved version conflicts.
+- `source/accepted/release-baseline.json`: reviewed original and final hash contract for the closed v1.02 release.
 - `source/accepted/`: reviewed literal source data, including original-text/Korean-translation tables, token streams, raw byte tables, ASM observations, and 476 explicit KANJI glyph sources.
 - `tools/valis_rebuild/`: D88 parser, low-level codec, strict source gate, literal byte serializer, and staged CLI.
 - `tests/`: tests for gates, low-level invariants, source tables, and the integrated build.
@@ -67,6 +67,6 @@ PYTHONPATH=. python -m tools.valis_rebuild compare \
 5. Control-token registry and character/token table.
 6. KANJI1 slot/ROM assignments and separately supplied glyph sources.
 7. Debugger-derived entrypoints, branch targets, free-space observations, and literal byte changes.
-8. D88/ROM serializer, round-trip verification, reproducibility logs, and integration tests.
+8. D88/ROM serializer, final hash verification, reproducibility logs, and integration tests.
 
-No component may be silently accepted because a completed reference image happens to match it.
+The completed reference may be used only to audit the locally produced result; it is never an input to the build command.

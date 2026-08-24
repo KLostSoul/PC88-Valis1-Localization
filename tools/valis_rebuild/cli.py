@@ -88,6 +88,8 @@ def command_build(args: argparse.Namespace) -> dict:
     # Separate component directories keep the two component logs independent.
     disk = build_disk(root, d88_source, output / "d88")
     kanji = build_kanji(root, rom_source, output / "kanji")
+    if disk["status"] != "OK" or kanji["status"] != "OK":
+        raise BuildError("output hash does not match reviewed release baseline")
     result = {
         "command": "build",
         "d88": disk,

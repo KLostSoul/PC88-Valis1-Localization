@@ -28,6 +28,18 @@ def _write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def _baseline(root: Path) -> dict:
+    return json.loads((root / "source/accepted/release-baseline.json").read_text(encoding="utf-8"))
+
+
+def _require_input(path: Path, expected_hash: str, expected_size: int, label: str) -> None:
+    actual = hashlib.sha256(path.read_bytes()).hexdigest()
+    if path.stat().st_size != expected_size or actual != expected_hash:
+        raise ValueError(
+            f"{label} is not the reviewed original: size={path.stat().st_size}, sha256={actual}"
+        )
+
+
 def _disk_tables(root: Path) -> list[tuple[str, Path]]:
     tables = [(f"event_block_{n}", root / f"source/accepted/tables/events/block-{n}-raw-changes.csv") for n in range(1, 7)]
     tables += [
@@ -40,6 +52,8 @@ def _disk_tables(root: Path) -> list[tuple[str, Path]]:
 
 def build_disk(root: Path, input_path: Path, output_dir: Path) -> dict:
     require_buildable(root)
+    baseline = _baseline(root)
+    _require_input(input_path, baseline["input"]["d88_sha256"], baseline["input"]["d88_size"], "D88 input")
     image = D88Image.read(input_path)
     component_reports = []
     component_reports.extend(apply_gameover(image, root / "source/accepted"))
@@ -56,7 +70,9 @@ def build_disk(root: Path, input_path: Path, output_dir: Path) -> dict:
         "component_reports": component_reports,
         "output": {"path": str(output), "sha256": image.sha256(), "size": len(image.data)},
         "structure": {"sectors": len(image.sectors), "flat_payload": len(image.flatten_payload())},
-        "status": "OK",
+        "expected_output_sha256": baseline["output"]["d88_sha256"],
+        "exact_release_match": image.sha256() == baseline["output"]["d88_sha256"],
+        "status": "OK" if image.sha256() == baseline["output"]["d88_sha256"] else "MISMATCH",
     }
     _write_json(output_dir / "repro-log.json", log)
     return log
@@ -64,6 +80,8 @@ def build_disk(root: Path, input_path: Path, output_dir: Path) -> dict:
 
 def build_kanji(root: Path, input_path: Path, output_dir: Path) -> dict:
     require_buildable(root)
+    baseline = _baseline(root)
+    _require_input(input_path, baseline["input"]["kanji1_sha256"], baseline["input"]["kanji1_size"], "KANJI1 input")
     original = input_path.read_bytes()
     assignments = load_assignments(
         root / "source/accepted/tables/kanji/assignments.csv",
@@ -81,7 +99,9 @@ def build_kanji(root: Path, input_path: Path, output_dir: Path) -> dict:
         "assignments": len(assignments),
         "changed_slots": sum(item["changed"] for item in glyph_report),
         "output": {"path": str(output), "sha256": hashlib.sha256(output_bytes).hexdigest(), "size": len(output_bytes)},
-        "status": "OK",
+        "expected_output_sha256": baseline["output"]["kanji1_sha256"],
+        "exact_release_match": hashlib.sha256(output_bytes).hexdigest() == baseline["output"]["kanji1_sha256"],
+        "status": "OK" if hashlib.sha256(output_bytes).hexdigest() == baseline["output"]["kanji1_sha256"] else "MISMATCH",
     }
     _write_json(output_dir / "repro-log.json", log)
     _write_json(output_dir / "glyph-report.json", {"schema": "valis-kanji-build-report/v1", "glyphs": glyph_report})

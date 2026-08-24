@@ -121,15 +121,46 @@ def lint_source_manifest(repo_root: str | Path) -> dict:
     }
 
 
+def lint_release_baseline(repo_root: str | Path) -> dict:
+    root = Path(repo_root)
+    path = root / "source" / "accepted" / "release-baseline.json"
+    doc = _load(path)
+    errors: list[str] = []
+    if doc.get("schema") != "valis-release-baseline/v1":
+        errors.append("unexpected release baseline schema")
+    for section in ("input", "output"):
+        value = doc.get(section)
+        if not isinstance(value, dict):
+            errors.append(f"missing {section} release values")
+            continue
+        for key in ("d88_sha256", "d88_size", "kanji1_sha256", "kanji1_size"):
+            if key not in value:
+                errors.append(f"missing {section}.{key}")
+    contract = doc.get("component_contract")
+    if not isinstance(contract, dict):
+        errors.append("missing final component contract")
+    required_contract = {"rule", "logo_final_raw_rows", "gameover_scroll_records", "event_final_raw_updates", "error07_final_raw_updates"}
+    if isinstance(contract, dict) and not required_contract.issubset(contract):
+        errors.append("final component contract is incomplete")
+    return {
+        "path": str(path.relative_to(root)),
+        "logo_final_raw_rows": contract.get("logo_final_raw_rows") if isinstance(contract, dict) else None,
+        "errors": errors,
+        "status": "OK" if not errors else "INVALID",
+    }
+
+
 def lint_all(repo_root: str | Path) -> dict:
     ledger = lint_ledger(repo_root)
     manifest = lint_source_manifest(repo_root)
+    release = lint_release_baseline(repo_root)
     text_sources = lint_text_sources(repo_root)
     return {
         "ledger": ledger,
         "source_manifest": manifest,
+        "release_baseline": release,
         "text_sources": text_sources,
-        "status": "OK" if ledger["status"] == "OK" and manifest["buildable"] and text_sources["status"] == "OK" else "BLOCKED",
+        "status": "OK" if ledger["status"] == "OK" and manifest["buildable"] and release["status"] == "OK" and text_sources["status"] == "OK" else "BLOCKED",
     }
 
 

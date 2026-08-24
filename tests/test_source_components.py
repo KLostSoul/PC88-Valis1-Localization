@@ -62,6 +62,12 @@ class SourceComponentTests(unittest.TestCase):
             disk = build_disk(ROOT, ORIGINAL_D88, output / "d88")
             kanji = build_kanji(ROOT, ORIGINAL_ROM, output / "kanji")
             self.assertEqual(disk["structure"], {"sectors": 422, "flat_payload": 407552})
+            self.assertTrue(disk["exact_release_match"])
+            self.assertEqual(
+                disk["output"]["sha256"],
+                "18e274dc730902f90e4d3939ad3ac2853c927d19baf896cee88e5b22321427b8",
+            )
+            self.assertTrue(kanji["exact_release_match"])
             self.assertEqual(kanji["output"]["sha256"], "3a4ce60dc4a23d7918a8726b99c2192c9420313bab40c50880eea3a387243f45")
 
 
