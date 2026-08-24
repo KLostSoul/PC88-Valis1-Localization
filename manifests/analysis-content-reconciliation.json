@@ -1,101 +1,47 @@
 {
-  "purpose": "Content-level reconciliation of the 25 Project analyses and 5 additional Markdown sources against the completed archive.",
+  "purpose": "Reconcile the 25 project analyses and five additional Markdown analyses with the completed source archive without opaque automatic mapping",
   "source_archive": {
     "name": "Valis 1(1).zip",
     "sha256": "49f6f6a9c3a7f2e787200d7b9b12ca8de0dd31315ebbb8c81197fadb5dd3ec3d"
   },
-  "analysis_read": {
-    "project_documents": {
-      "count": 25,
-      "order": "Project 1 through Project 25",
-      "eof_verified": true,
-      "method": "Ordered paragraph and table extraction followed by sequential review to the end of each document; keyword-only extraction was not used."
-    },
-    "markdown_sources": [
-      {
-        "order": 26,
-        "path": "additional_five_sources/Valis 1 PC-88 세이브-20260822-0820.md",
-        "logical_lines": 607,
-        "content_lines_before_export_footer": 606,
-        "sha256": "ef58c25ff1ede63d27dbecea6f6a6e379e99b7285bfd191c9ab9e384f0e63315",
-        "eof_verified": true,
-        "status": "manual-page correction and source-quality audit"
-      },
-      {
-        "order": 27,
-        "path": "additional_five_sources/바리스 로고 로드 분석-20260822-0817.md",
-        "logical_lines": 58588,
-        "content_lines_before_export_footer": 58587,
-        "sha256": "81437b253e1d7f3dbee8f7043aa44bed7408774d0335312d2f9701c6b71dff50",
-        "eof_verified": true,
-        "status": "loader and logo lineage audit"
-      },
-      {
-        "order": 28,
-        "path": "additional_five_sources/요청-20260822-0819.md",
-        "logical_lines": 12347,
-        "content_lines_before_export_footer": 12346,
-        "sha256": "e7abf8e6ac57191cab23c9666864c54ce840834adb2279ea15d530891814f874",
-        "eof_verified": true,
-        "status": "Block 1–6 and ending intermediate-result audit"
-      },
-      {
-        "order": 29,
-        "path": "additional_five_sources/통합 정리-20260822-0811.md",
-        "logical_lines": 39889,
-        "content_lines_before_export_footer": 39888,
-        "sha256": "426d0243417a3a45030c416c2997e193dfd5d3c79fc705de90e2b40b583a99c3",
-        "eof_verified": true,
-        "status": "cross-project synthesis with conflicting completion claims"
-      },
-      {
-        "order": 30,
-        "path": "additional_five_sources/한글 음절로 칸지롬 글리프 생성-20260822-0810.md",
-        "logical_lines": 11202,
-        "content_lines_before_export_footer": 11201,
-        "sha256": "27b57ab61221a4b0c7d5d7203cd2f9c253b5bd5a943484db27cae3ae75e88e43",
-        "eof_verified": true,
-        "status": "glyph generation, Error 07, and skill-gap audit"
-      }
-    ],
-    "stale_reading_memos_not_authoritative": true
+  "reading_status": {
+    "project_documents": 25,
+    "markdown_documents": 5,
+    "eof_verified": true,
+    "use": "historical reasoning, failure causes, source lineage, and candidate claims were reviewed; only independently parseable completion sources were promoted to the builder"
   },
-  "reconciliation": {
-    "confirmed_against_completion_archive": [
-      "The seven final bundles expose the recorded runtime ranges, terminators, row counts, mismatch counts, and unchanged-file checks listed in full-archive-audit.json.",
-      "The integrated Disk A IPS contains a 7521-byte delta intersection with the logo source range 0xB2F0–0xD35F; this supports the logo analysis at file-delta level, not emulator-screen level.",
-      "The integrated Disk A IPS contains 23330 changed bytes in total; the final KANJI1 IPS contains 12621 changed bytes across 476 32-byte slots.",
-      "The final artifacts retain a fixed-size mixed-sector D88 and fixed-size KANJI1 result; the public repository distributes only deltas and verification code."
-    ],
-    "historical_or_partial_only": [
-      "Projects 1–18 document discovery, runtime probes, and failed or incomplete Korean-output attempts at their respective EOFs; their no-patch conclusions are historical checkpoints, not statements about the later integrated release.",
-      "Project 19 proves a small first-event display sample and a KANJI sample replacement, not the full event.",
-      "Projects 20–21 record changing token hypotheses; the automatic control-token repositioned images were rejected after comparison.",
-      "Project 22 manual_v2 reached a useful screen-transition checkpoint, but full glyph and D88/ROM integration was not proven there.",
-      "Project 23 records a partial 525-character repatch and glyph-generation checks; it does not establish a single complete 1441-row semantic table.",
-      "Projects 24–25 still contain unresolved mappings, intermediate tables, and incomplete runtime verification at EOF.",
-      "The five Markdown sources contain later integration claims, but their sections also preserve discarded experiments and contradictory 100-percent completion language; those claims are retained as lineage, not promoted automatically."
-    ],
-    "discarded_or_do_not_reuse": [
-      "Do not merge the 513-, 525-, and 540-slot Block 1 lineages by automatic renumbering.",
-      "Do not revive E8 0B, guessed control-token positions, or automatically generated token tables after the later dump comparisons rejected them.",
-      "Do not treat generic 2D disk capacity as the capacity of this mixed-sector D88 image.",
-      "Do not treat speculative F0–F7 FDC paths, 0x0C86 row-limit interpretations, or automatic JIS/Unicode glyph naming as final evidence.",
-      "Do not infer Korean text meaning or emulator behavior from IPS offsets, glyph counts, or static CSV/JSON counts alone."
-    ],
-    "not_proven_by_repository_artifacts": [
-      "A QUASI88 boot and screen-by-screen verification of every event, mouth animation, transition, ending, and game-over path.",
-      "Semantic correctness of every Korean string and every glyph display in context.",
-      "Availability or redistribution rights for the original D88, ROM, completed images, full translation tables, or glyph source assets.",
-      "A strict local build from the included archive alone; the canonical original D88 and KANJI1 ROM are intentionally user-supplied inputs."
-    ]
-  },
-  "completion_archive_checks": {
-    "final_bundles": 7,
-    "integrated_disk_ips_changed_bytes": 23330,
-    "logo_delta_intersection_bytes": 7521,
-    "kanji_changed_slots": 476,
-    "screen_verification_here": false,
-    "source_lineages_auto_merged": false
-  }
+  "promoted_to_reproduction_sources": [
+    "Block 1~6 and ending final CSV rows with explicit disk_offset/raw_old/raw_new",
+    "Logo source BIN streams and the verified RAM-to-raw reverse map/formula",
+    "Gameover original token-pair DOCX tables and the four SUB-to-D88 groups",
+    "Error message DOCX D88 and D88 저장값 columns, including the documented row-50 warning",
+    "476 KANJI VISUALTXT glyphs with explicit filename offsets"
+  ],
+  "confirmed_completion_facts": [
+    "Seven final D88 bundles can each be rebuilt exactly from the canonical baseline; they are independent branches, not one cumulative image.",
+    "Logo source streams account for 7,595 changed raw bytes under the verified reverse map.",
+    "KANJI source contains 476 unique 32-byte glyph slots and 7,616 source byte writes.",
+    "The Error table yields 97 source writes and 73 changed bytes on the baseline; its row-50 range/value-count inconsistency is retained as a warning.",
+    "The D88 remains a fixed-size mixed-sector image and the KANJI1 output remains a fixed-size ROM."
+  ],
+  "historical_or_partial_only": [
+    "Projects 1~18 are discovery, probes, and failed or incomplete intermediate attempts.",
+    "Projects 19~22 contain useful checkpoints but rejected control-token hypotheses and incomplete integration.",
+    "Project 23 records partial repatching and glyph work, not a single complete semantic table.",
+    "Projects 24~25 and the five Markdown sources preserve unresolved mappings, discarded experiments, and conflicting completion language; those passages remain lineage evidence rather than build instructions."
+  ],
+  "do_not_reuse": [
+    "513/525/540 Block 1 slot lineages merged by automatic renumbering",
+    "Guessed control-token positions or discarded E8 0B hypotheses",
+    "Generic 2D disk-capacity substitutions for this mixed-sector D88",
+    "Automatic JIS/Unicode glyph-name mapping",
+    "IPS offsets or static counts treated as proof of Korean meaning or emulator-screen behavior"
+  ],
+  "not_proven_by_static_build": [
+    "Full QUASI88 boot and screen-by-screen verification",
+    "Semantic correctness of every Korean string and glyph in context",
+    "Mouth animation and every scene-transition path",
+    "Redistribution rights for original images, completed images, full source tables, or glyph assets"
+  ],
+  "copyright_safe_repository_rule": "Commit source-reading code, manifests, tests, and documentation; keep original/completed game data and source archive outside the repository."
 }
