@@ -73,3 +73,6 @@ PYTHONPATH=. python -m tools.valis_rebuild compare \
 - [직접 바이너리 재현 빌드 안내서](docs/direct-binary-build.md)
 - [분석 근거와 빌드 소스 대응표](docs/evidence-and-source-map.md)
 - [재현 빌드 검증 절차](docs/reproducibility.md)
+
+## 주의
+이 빌드는 비공식 한글 패치이며, 모든 저작권은 원작자에게 있습니다.
