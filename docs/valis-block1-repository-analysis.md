@@ -117,7 +117,6 @@ PC88-Valis1-Localization/
 ├─ README.md
 ├─ docs/
 │  ├─ valis-block1-repository-analysis.md
-│  ├─ Valis_Block_1_Repository_정리분석.docx
 │  └─ valis-block1-distribution-scope.md
 ├─ evidence/
 │  └─ Valis_Block1_정리본_2026-08-24_copyright-safe.zip
@@ -138,7 +137,6 @@ PC88-Valis1-Localization/
 Valis_Block1_정리본_2026-08-24/
 ├─ README.md
 ├─ 00_analysis/
-│  ├─ Valis_Block_1_Repository_정리분석.docx
 │  └─ valis-block1-repository-analysis.md
 ├─ source_inventory.csv
 └─ 99_audit/
@@ -153,7 +151,7 @@ Valis_Block1_정리본_2026-08-24/
 
 ### 공개 저장소와 압축본에 포함
 
-- 새로 작성한 MD/DOCX 분석문서.
+- 새로 작성한 MD 분석문서.
 - 계보표·충돌표·공개 압축본의 SHA-256 manifest.
 - 원본 입력의 종류·날짜·검증 역할·재배포 상태를 적은 inventory.
 - 원본을 다시 배포하지 않고도 후속 검증을 설계할 수 있는 지침.
