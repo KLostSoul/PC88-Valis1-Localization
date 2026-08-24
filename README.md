@@ -2,7 +2,7 @@
 
 이 저장소는 PC-88판 《무겐전사 바리스 1》의 한국어 한글패치를 원본 매체에서 다시 만드는 Python 기반 재현 빌드입니다.
 
-빌드는 사용자가 제공한 원본 D88과 `KANJI1.ROM`을 읽고, 분석과 디버거 확인을 거쳐 확정한 직접 바이트 표를 원본 복사본에 적용합니다. 완료본 D88·ROM이나 IPS를 빌드 입력으로 사용하지 않으며, 어셈블러로 새 코드를 조립하지 않습니다.
+빌드는 사용자가 제공한 원본 D88과 `KANJI1.ROM`을 읽고, 분석과 디버거 확인을 거쳐 확정한 직접 바이트 표를 원본 복사본에 적용합니다.
 
 ## 빌드 구성
 
@@ -24,7 +24,7 @@
 재현된 D88/ROM
 ```
 
-자동 문서 추출, 자동 토큰 매핑, 주소 추정, 완료본 바이트의 소스 승격은 수행하지 않습니다. 빌더는 사람이 확정한 행만 검사하고 기록합니다.
+빌더는 사람이 확정한 행을 검사하고 기록합니다.
 
 ## 실행
 
@@ -53,7 +53,7 @@ PYTHONPATH=. python -m tools.valis_rebuild verify \
   --rom build/reproduction/kanji/KANJI1.ROM
 ```
 
-완료본과의 대조가 필요할 때만 로컬 비교 파일을 지정합니다.
+결과를 기준 파일과 대조합니다.
 
 ```sh
 PYTHONPATH=. python -m tools.valis_rebuild compare \
@@ -64,9 +64,9 @@ PYTHONPATH=. python -m tools.valis_rebuild compare \
 
 ## 결과물과 보관 범위
 
-빌드 결과는 `build/` 아래에 생성합니다. 원본 D88·ROM, 완료본 ZIP·D88·ROM, IPS, 추출 이미지와 로컬 비교 결과는 저장소에 넣지 않습니다.
+빌드 결과는 `build/` 아래에 생성합니다.
 
-상세한 작업·검증 절차:
+## 문서
 
 - [직접 바이너리 재현 빌드 안내서](docs/direct-binary-build.md)
 - [분석 근거와 빌드 소스 대응표](docs/evidence-and-source-map.md)
