@@ -9,8 +9,6 @@ PC-8801판 《몽환전사 바리스 1》 한글화의 분석 기록과 재현 �
 - 새 통합 분석: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
 - Word 분석문서: [`docs/Valis_Block_1_Repository_정리분석.docx`](docs/Valis_Block_1_Repository_정리분석.docx)
 - 배포 범위: [`docs/valis-block1-distribution-scope.md`](docs/valis-block1-distribution-scope.md)
-- 기존 Block 1 상세 분석: [`docs/Valis_Block_1_상세통합분석.docx`](docs/Valis_Block_1_상세통합분석.docx)
-- 기존 30개 통합 분석: [`docs/Valis_30개_통합_분석문서.docx`](docs/Valis_30개_통합_분석문서.docx)
 - 저작권 보수형 Block 1 분석 압축본: [`evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip`](evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip)
 - 계보 등록부: [`manifests/block1_lineage_register.csv`](manifests/block1_lineage_register.csv)
 - 충돌 등록부: [`manifests/block1_conflict_register.csv`](manifests/block1_conflict_register.csv)

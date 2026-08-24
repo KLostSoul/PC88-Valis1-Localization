@@ -1,0 +1,15 @@
+# Do not accidentally commit original or derived game data.
+*.d88
+*.rom
+*.ips
+*.bin
+*.img
+*.iso
+**/original_bundles/
+**/raw/
+**/extracted/
+**/render/
+
+# The only intentionally versioned archive is the copyright-safe analysis bundle.
+*.zip
+!evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip
