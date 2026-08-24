@@ -1,6 +1,6 @@
 # Valis 1 통합 분석·재빌드 정리본
 
-이 문서는 기존 Block 1 계보 기록과 `Valis 1(1).zip` 전체 완료본을 대조해, 실제 통합 빌드에 필요한 기준만 남긴 정리본이다. 문서에 적힌 문자열·토큰·주소를 자동 매핑해 새 결과를 만들지 않는다. 최종 빌드의 권위 있는 입력은 완료본에서 확인한 1.02 IPS 두 개이며, 사용자가 직접 보유한 정확한 원본 D88·KANJI1 ROM에 적용한다.
+이 문서는 기존 Block 1 계보 기록과 `Valis 1(1).zip` 전체 완료본을 대조해, 실제 통합 빌드에 필요한 기준만 남긴 정리본이다. 문서에 적힌 문자열·토큰·주소를 자동 매핑해 새 결과를 만들지 않는다. 최종 빌드의 권위 있는 입력은 완료본에서 확인한 1.02 IPS 두 개이며, 사용자가 직접 보유한 정확한 원본 D88·KANJI1 ROM에 적용한다. 25개 Project 분석과 추가 5개 MD의 내용 대조 결과는 [`manifests/analysis-content-reconciliation.json`](../manifests/analysis-content-reconciliation.json)에 별도로 고정했으며, 문서상 역사적 주장과 파일 수준 검증을 섞지 않는다.
 
 ## 1. 최종 결론
 
@@ -25,7 +25,7 @@
 | 최상위 통합 IPS | Disk A 1개 + KANJI1 1개 |
 | 최상위 IPS와 재현 스킬 내부 자산 | 두 파일 모두 바이트 일치 |
 
-전체 파일별 해시와 문서 수치는 [`manifests/full-archive-audit.json`](../manifests/full-archive-audit.json)에 고정했다. 이 manifest에는 번역 행이나 글리프 데이터를 복사하지 않고, 파일 식별자·크기·해시·검증 수치만 남겼다.
+전체 파일별 해시와 문서·번들 수치는 [`manifests/full-archive-audit.json`](../manifests/full-archive-audit.json)에 고정했다. 이 manifest에는 번역 행이나 글리프 데이터를 복사하지 않고, 파일 식별자·크기·해시·검증 수치만 남겼다. 문서의 주장·정정·폐기 항목을 실제 완료본과 대조한 별도 결과는 [`manifests/analysis-content-reconciliation.json`](../manifests/analysis-content-reconciliation.json)에 있다.
 
 ## 3. 완료본의 최종 번들 대조
 
@@ -57,6 +57,18 @@
 | 완료본 1.02 | Disk A·KANJI1 통합 IPS pair | 재현 빌드의 유일한 공개 delta 기준 |
 
 따라서 `18 12`를 초기 `E8 0B`와 합치거나, 513/525/540 행을 자동으로 재번호화하거나, 과거 ROM의 글리프 슬롯을 1.02 ROM에 자동 이식하지 않는다.
+
+## 4.1 문서 내용 대조 결과
+
+원문 30개는 순서를 고정해 EOF까지 확인했다. Project 문서는 문단과 표를 원래 순서로 추출해 검토했고, MD 원문은 현재 파일의 논리 행 수·SHA-256·끝부분을 확인한 뒤 각 문서의 결론, 정정, 폐기 이력을 완료본 수치와 대조했다. 이 결과는 다음처럼 분리한다.
+
+- 최종 완료본과 직접 맞는 것은 7개 번들의 실행 범위·종료 바이트·행/문자/제어 수·mismatch 및 파일 크기 검증, 통합 Disk IPS의 23,330 변경 바이트, 로고 범위와 겹치는 7,521바이트, KANJI1의 476 슬롯이다.
+- Project 1~18의 “한글 출력/패치 미완료”는 각 문서 EOF 시점의 역사적 상태다. 이후 통합 완료본의 상태를 부정하거나 대체하는 최신 판정으로 읽지 않는다.
+- Project 19의 3문자 표시, Project 22의 `manual_v2`, Project 23의 525자 재패치, MD의 471→476 글리프 계보는 부분 성공 또는 산출물 계보다. 전체 화면·전체 의미·전체 실행 성공의 증명으로 확장하지 않는다.
+- Project 20~21의 자동 토큰 재배치, 513/525/540 계보 자동 병합, MD에 남은 자동 JIS/Unicode 매핑 및 “100%” 문구는 최종 입력으로 승격하지 않는다.
+- 실행 화면, 번역 문장 의미, 모든 글리프의 문맥별 표시, 원본 이미지의 배포 권리는 저장소의 정적 파일만으로 확정하지 않는다.
+
+이 절의 판단은 요약을 위한 자동 매핑이 아니라 각 문서에 남은 성공·실패·정정의 위치를 최종 파일 수준 결과와 분리한 것이다.
 
 ## 5. 통합 IPS의 독립 검산
 
@@ -106,4 +118,4 @@ QUASI88 부팅, 화면 글리프, 발화 입 모양, 장면 전환, 엔딩·게�
 
 ## 9. 최종 상태
 
-통합 완료본과 기존 통합분석을 대조해 중복·역사적 중간 산출물·자동 매핑 위험을 제거했고, 재빌드에 필요한 공개 파일만 남겼다. 최종 재현 절차는 `docs/integrated-reproduction-build.md`, 기계 검산 결과는 `manifests/full-archive-audit.json`, 실행 코드는 `tools/reproduce_valis1.py`를 기준으로 한다.
+파일 수준에서는 통합 완료본의 1.02 IPS·해시·번들 수치를 재검산했고, 내용 수준에서는 30개 분석문서의 역사적 주장·부분 성공·폐기 항목을 별도 manifest로 분리했다. 따라서 저장소는 재빌드에 필요한 공개 파일만 제공하며, “문서 수치가 맞다”는 것과 “에뮬레이터 화면까지 검증됐다”는 것을 같은 완료 상태로 부르지 않는다. 최종 재현 절차는 `docs/integrated-reproduction-build.md`, 기계 검산 결과는 `manifests/full-archive-audit.json`, 내용 대조 결과는 `manifests/analysis-content-reconciliation.json`, 실행 코드는 `tools/reproduce_valis1.py`를 기준으로 한다.

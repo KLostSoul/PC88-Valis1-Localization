@@ -42,7 +42,9 @@ build-report.json
 
 `Valis 1(1).zip`은 Block 1~6, 엔딩, 로고, Gameover, KANJIROM 자료와 분석 산출물을 포함한 작업 아카이브다. 내부의 블록별 `FINAL` 표기는 각 시점의 번들 이름이지, 서로 다른 중간 D88을 다시 이어 붙이라는 지시가 아니다. 통합 빌드는 아카이브 최상위에 포함된 1.02 IPS 두 개를 사용한다.
 
-`tools/reproduce_valis1.py audit-source`는 이 ZIP의 최상위 파일 65개를 읽어 해시를 기록하고, 25개 Project DOCX와 5개 MD 분석 DOCX를 모두 확인하며, Block 1~6 및 엔딩의 최종 패치 번들 7개에서 IPS/JSON/CSV/D88 구성과 보고서의 수치 검증 필드를 대조한다. 감사 결과는 [`manifests/full-archive-audit.json`](../manifests/full-archive-audit.json)에 저장한다. 이 감사는 번역 문장이나 글리프를 자동 매핑하지 않는다.
+`tools/reproduce_valis1.py audit-source`는 이 ZIP의 최상위 파일 65개를 읽어 해시를 기록하고, 25개 Project DOCX와 5개 MD 분석 DOCX를 모두 확인하며, Block 1~6 및 엔딩의 최종 패치 번들 7개에서 IPS/JSON/CSV/D88 구성과 보고서의 수치 검증 필드를 대조한다. 감사 결과는 [`manifests/full-archive-audit.json`](../manifests/full-archive-audit.json)에 저장한다. 이 감사는 번역 문장이나 글리프를 자동 매핑하지 않는다. 30개 분석문서의 역사적 주장·부분 성공·폐기 항목을 완료본과 내용 수준에서 분리한 결과는 [`manifests/analysis-content-reconciliation.json`](../manifests/analysis-content-reconciliation.json)에 저장한다.
+
+내용 대조 manifest는 문서의 모든 수치를 새 번역 데이터로 재생성했다는 뜻이 아니다. 완료본에서 독립적으로 확인되는 파일 수준 사실과, 각 문서 EOF 시점의 탐색·실패·부분 성공 기록을 분리해 재빌드 입력으로 승격할 항목만 고정한다.
 
 ```bash
 python3 tools/reproduce_valis1.py audit-source \

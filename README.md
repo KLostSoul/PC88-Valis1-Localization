@@ -10,6 +10,7 @@ PC-8801판 《몽환전사 바리스 1》 한글화의 통합 재현 빌드와 �
 - Python 빌더/검증기: [`tools/reproduce_valis1.py`](tools/reproduce_valis1.py)
 - 통합 빌드 manifest: [`manifests/integrated-build.json`](manifests/integrated-build.json)
 - 전체 완료본 감사 manifest: [`manifests/full-archive-audit.json`](manifests/full-archive-audit.json)
+- 30개 분석문서 내용 대조 manifest: [`manifests/analysis-content-reconciliation.json`](manifests/analysis-content-reconciliation.json)
 - Block 1 분석: [`docs/valis-block1-repository-analysis.md`](docs/valis-block1-repository-analysis.md)
 - 배포 범위: [`docs/valis-block1-distribution-scope.md`](docs/valis-block1-distribution-scope.md)
 
@@ -35,4 +36,4 @@ python3 -m unittest discover -s tests -v
 
 실제 빌드는 [`docs/integrated-reproduction-build.md`](docs/integrated-reproduction-build.md)의 원본 입력 해시와 명령을 따른다. 원본 해시가 다르면 도구가 중지하며, 원본을 자동으로 찾거나 다운로드하지 않는다.
 
-현재 상태: 통합 IPS·Python 재현·전체 완료본 감사·정리된 통합 분석은 저장소에 고정했고, QUASI88의 실제 화면/장면 전환 검증은 사용자의 로컬 실행 gate로 분리했다.
+현재 상태: 통합 IPS·Python 재현·전체 완료본 파일 감사·30개 분석문서 내용 대조 결과를 저장소에 고정했고, QUASI88의 실제 화면/장면 전환 검증은 사용자의 로컬 실행 gate로 분리했다. 정적 완료본 수치와 런타임 완료를 같은 의미로 취급하지 않는다.
