@@ -11,7 +11,7 @@ from tools.valis_rebuild.text_sources import lint_text_sources
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGINAL_ROM = ROOT.parent / "upload" / "KANJI1(5).ROM"
-ORIGINAL_D88 = ROOT.parent / "upload" / "Mugen Senshi Valis (1986)(Nihon Telenet)(Disk 1 of 2)(2).d88"
+ORIGINAL_D88 = ROOT.parent / "upload" / "Mugen Senshi Valis (1986)(Nihon Telenet)(Disk 1 of 2)(1).d88"
 
 
 class SourceComponentTests(unittest.TestCase):

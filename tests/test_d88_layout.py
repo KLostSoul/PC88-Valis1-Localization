@@ -6,7 +6,7 @@ from tools.valis_rebuild.d88 import D88Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_D88 = ROOT.parent / "upload" / "Mugen Senshi Valis (1986)(Nihon Telenet)(Disk 1 of 2)(2).d88"
+DEFAULT_D88 = ROOT.parent / "upload" / "Mugen Senshi Valis (1986)(Nihon Telenet)(Disk 1 of 2)(1).d88"
 D88_PATH = Path(os.environ.get("VALIS_ORIGINAL_D88", DEFAULT_D88))
 
 
@@ -21,3 +21,4 @@ class D88LayoutTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
