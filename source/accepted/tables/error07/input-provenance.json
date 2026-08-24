@@ -1,0 +1,7 @@
+{
+  "schema": "valis-error07-source-provenance/v1",
+  "original_d88_sha256": "7404998ee7e94e14d065a11e55bc26f7f8733202eec6774610a20a6d0b5a1fdf",
+  "table6_tail_resolution": "0x3175 down through 0x316B from row 49 adjacency",
+  "write_count": 97,
+  "reported_changed_byte_count": 73
+}

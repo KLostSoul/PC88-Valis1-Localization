@@ -1,0 +1,23 @@
+{
+  "schema": "valis-asm-symbols/v1",
+  "symbols": {
+    "EVENT_CONSUMER": "0x02ED",
+    "GAMEOVER_FIXED_PRINTER": "0x040F",
+    "GAMEOVER_SCROLL_START": "0x0D73",
+    "GAMEOVER_SCROLL_CONSUMER": "0x1735",
+    "ERROR07_MODULE_RAM": "0xED9D",
+    "ERROR07_EXEC_MODULE": "0xBD00",
+    "ERROR07_EXEC_COMMANDS": "0xBE8A",
+    "ERROR07_DYNAMIC_ERROR": "0xBE9A",
+    "ERROR07_DYNAMIC_DISK": "0xBEAB",
+    "ERROR07_DYNAMIC_DRIVE": "0xBEBA",
+    "LOGO_SCROLL_ROUTINE": "0x04A1",
+    "LOGO_MOVEMENT_DECODER": "0x05CE",
+    "LOGO_FIXED_DECODER": "0x061F",
+    "HOLD_34_35": "0x0153"
+  },
+  "review": {
+    "status": "confirmed",
+    "source": "completion ZIP internal analysis documents and patch tables"
+  }
+}

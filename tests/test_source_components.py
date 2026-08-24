@@ -1,0 +1,69 @@
+import json
+import csv
+import tempfile
+from pathlib import Path
+import unittest
+
+from tools.valis_rebuild.kanji import build_rom, load_assignments
+from tools.valis_rebuild.pipeline import build_disk, build_kanji
+from tools.valis_rebuild.text_sources import lint_text_sources
+
+
+ROOT = Path(__file__).resolve().parents[1]
+ORIGINAL_ROM = ROOT.parent / "upload" / "KANJI1(5).ROM"
+ORIGINAL_D88 = ROOT.parent / "upload" / "Mugen Senshi Valis (1986)(Nihon Telenet)(Disk 1 of 2)(1).d88"
+
+
+class SourceComponentTests(unittest.TestCase):
+    def test_original_and_korean_event_tables_are_separate_literal_sources(self):
+        original = ROOT / "source/accepted/text/event-block-2.jsonl"
+        korean = ROOT / "source/accepted/text/event-block-2-korean.jsonl"
+        original_rows = [json.loads(line) for line in original.read_text(encoding="utf-8").splitlines()]
+        korean_rows = [json.loads(line) for line in korean.read_text(encoding="utf-8").splitlines()]
+        self.assertGreater(len(original_rows), 0)
+        self.assertEqual(len(korean_rows), 1653)
+        self.assertTrue(all("original" in row and "translation" in row for row in original_rows))
+        self.assertTrue(all("token_bytes" in row and "translation" in row for row in korean_rows))
+
+    @unittest.skipUnless(ORIGINAL_ROM.exists(), "original KANJI1 is not supplied")
+    def test_explicit_kanji_source_reproduces_known_rom_hash(self):
+        assignments = load_assignments(
+            ROOT / "source/accepted/tables/kanji/assignments.csv",
+            ROOT / "source/accepted/kanji",
+        )
+        output, _ = build_rom(ORIGINAL_ROM.read_bytes(), assignments)
+        self.assertEqual(
+            __import__("hashlib").sha256(output).hexdigest(),
+            "3a4ce60dc4a23d7918a8726b99c2192c9420313bab40c50880eea3a387243f45",
+        )
+
+    def test_text_source_index_has_original_translation_and_all_segment_sets(self):
+        report = lint_text_sources(ROOT)
+        self.assertEqual(report["status"], "OK", report)
+        ending = [json.loads(line) for line in (ROOT / "source/accepted/text/ending-24.jsonl").read_text(encoding="utf-8").splitlines()]
+        self.assertEqual([row["segment"] for row in ending], list(range(1, 25)))
+        self.assertTrue(all(row["original"] and row["translation"] for row in ending))
+
+    def test_literal_raw_tables_have_expected_counts_and_unique_offsets(self):
+        expected = {1: 1449, 2: 3536, 3: 1934, 4: 1701, 5: 2848, 6: 817}
+        for block, count in expected.items():
+            path = ROOT / f"source/accepted/tables/events/block-{block}-raw-changes.csv"
+            with path.open(encoding="utf-8-sig", newline="") as handle:
+                rows = list(csv.DictReader(handle))
+            self.assertEqual(len(rows), count)
+            offsets = [row["disk_offset"] for row in rows]
+            self.assertEqual(len(offsets), len(set(offsets)))
+            self.assertTrue(all(row["raw_old"] and row["raw_new"] for row in rows))
+
+    @unittest.skipUnless(ORIGINAL_D88.exists() and ORIGINAL_ROM.exists(), "original media is not supplied")
+    def test_integrated_build_from_original_media(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            disk = build_disk(ROOT, ORIGINAL_D88, output / "d88")
+            kanji = build_kanji(ROOT, ORIGINAL_ROM, output / "kanji")
+            self.assertEqual(disk["structure"], {"sectors": 422, "flat_payload": 407552})
+            self.assertEqual(kanji["output"]["sha256"], "3a4ce60dc4a23d7918a8726b99c2192c9420313bab40c50880eea3a387243f45")
+
+
+if __name__ == "__main__":
+    unittest.main()

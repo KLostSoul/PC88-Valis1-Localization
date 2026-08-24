@@ -1,0 +1,13 @@
+﻿segment,char_index,char,base_code_pair,base_code,source_char_token,check
+02,14,“,80 22,0x2280,88 22,OK_08h_cleared
+02,18,”,90 22,0x2290,98 22,OK_08h_cleared
+03,0,“,80 22,0x2280,88 22,OK_08h_cleared
+03,2,”,90 22,0x2290,98 22,OK_08h_cleared
+05,4,“,80 22,0x2280,88 22,OK_08h_cleared
+05,8,”,90 22,0x2290,98 22,OK_08h_cleared
+05,10,“,80 22,0x2280,88 22,OK_08h_cleared
+05,12,”,90 22,0x2290,98 22,OK_08h_cleared
+08,0,“,80 22,0x2280,88 22,OK_08h_cleared
+08,4,”,90 22,0x2290,98 22,OK_08h_cleared
+08,6,“,80 22,0x2280,88 22,OK_08h_cleared
+08,10,”,90 22,0x2290,98 22,OK_08h_cleared

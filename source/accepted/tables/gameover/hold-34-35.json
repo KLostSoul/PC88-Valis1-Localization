@@ -1,0 +1,16 @@
+{
+  "schema": "valis-gameover-hold-patch/v1",
+  "component": "gameover_hold_34_35",
+  "runtime_address": "0x0153",
+  "runtime_old": "42",
+  "runtime_new": "30",
+  "d88_sector": {"c": "06", "h": "40", "r": "01", "n": "03"},
+  "disk_offset": "0x079AC",
+  "raw_old": "5C",
+  "raw_new": "4A",
+  "source": {
+    "document": "Valis1_PC88_Localization_Skills_IPS_Only_2026-08-09/skills/patch-valis1-pc88-ko/references/ending-staffroll-logo.md",
+    "observation": "Final one-byte hold reduction; earlier hook/counter paths rejected."
+  },
+  "review": "confirmed"
+}

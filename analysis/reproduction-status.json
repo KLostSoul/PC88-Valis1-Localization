@@ -1,0 +1,81 @@
+{
+  "schema": "valis-reproduction-status/v1",
+  "status": "candidate_with_reference_conflicts",
+  "policy": {
+    "original_media_is_build_input": true,
+    "completed_archive_is_comparison_only": true,
+    "automatic_extraction": false,
+    "automatic_mapping": false,
+    "reference_bytes_stored_in_repository": false
+  },
+  "original_inputs": {
+    "d88": {
+      "size": 414992,
+      "sha256": "7404998ee7e94e14d065a11e55bc26f7f8733202eec6774610a20a6d0b5a1fdf",
+      "sectors": 422,
+      "flat_payload_bytes": 407552
+    },
+    "kanji1": {
+      "size": 131072,
+      "sha256": "f6c1c5022fe5935f6dfa3eb919e51441e75191270b639edcb7938b3bce41f6a3"
+    }
+  },
+  "source_tables": {
+    "event_blocks": {
+      "original_translation_rows": {"1": 170, "2": 36, "3": 23, "4": 19, "5": 39, "6": 10},
+      "korean_verification_rows": {"2": 1653, "3": 984, "4": 811, "5": 1381, "6": 411},
+      "raw_change_rows": {"1": 1449, "2": 3536, "3": 1934, "4": 1701, "5": 2848, "6": 817},
+      "component_bundle_csv_audit": "all six final component change CSVs matched by D88 offset and new byte"
+    },
+    "gameover": {"fixed_segments": 15, "scroll_blocks": 35, "source_role": "literal text/token/address tables"},
+    "ending": {"segments": 24, "stream_bytes_through_24th_terminator": 3622, "terminators": 24},
+    "kanji": {"explicit_assignments": 476, "expected_built_sha256": "3a4ce60dc4a23d7918a8726b99c2192c9420313bab40c50880eea3a387243f45"}
+  },
+  "local_comparison_only": {
+    "reference_sha256": "18e274dc730902f90e4d3939ad3ac2853c927d19baf896cee88e5b22321427b8",
+    "reference_source": "local completion-archive comparison image; not stored and not a build input",
+    "current_source_build_sha256": "a18c1c9549c7e95a762293f4677826f36058ab21be8bc84e8c8a499ee4e8ee36",
+    "different_file_bytes": 6397,
+    "reference_changed_bytes": 23330,
+    "source_changed_bytes": 23398,
+    "reference_uncovered_source_offsets": 320,
+    "source_extra_offsets": 388,
+    "component_differences": {
+      "gameover": 338,
+      "logo": 5717,
+      "error07": 11,
+      "event_block_1": 2,
+      "event_block_2": 2,
+      "event_block_3": 2,
+      "event_block_4": 2,
+      "event_block_5": 3,
+      "event_block_6": 0,
+      "ending": 0,
+      "hold": 0
+    }
+  },
+  "unresolved": [
+    {
+      "component": "gameover_scroll_12_35",
+      "reason": "The explicit 2026-06-24 source table and the later integrated comparison image disagree on block ordering/body bytes. The source table is retained; reference bytes are not copied back into source."
+    },
+    {
+      "component": "title_logo",
+      "reason": "The detailed logo analysis records a 7521-byte final comparison while the accepted raw table has 7595 rows; reverse mapping and 5E lower-row correction require independent closure."
+    },
+    {
+      "component": "error07_tail",
+      "reason": "The accepted table explicitly clears 11 tail bytes, while the integrated comparison image retains non-zero values at 0x316B..0x3175."
+    },
+    {
+      "component": "integrated_version_lock",
+      "reason": "Component bundles, detailed analysis documents, and the later 1.02 comparison image are different dated baselines; they must not be silently mixed."
+    }
+  ],
+  "release_gate": {
+    "build_from_original": "allowed",
+    "structural_verify": "required",
+    "reference_compare": "required",
+    "exact_release": "blocked_until_unresolved_conflicts_are_resolved"
+  }
+}

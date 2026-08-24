@@ -1,0 +1,22 @@
+{
+  "schema": "valis-literal-text-source-index/v1",
+  "mode": "verbatim-table-transcription",
+  "automatic_mapping": false,
+  "automatic_binary_extraction": false,
+  "records": {
+    "event_block_1": {"path": "text/event-block-1.jsonl", "rows": 170},
+    "event_block_2": {"path": "text/event-block-2.jsonl", "rows": 36},
+    "event_block_3": {"path": "text/event-block-3.jsonl", "rows": 23},
+    "event_block_4": {"path": "text/event-block-4.jsonl", "rows": 19},
+    "event_block_5": {"path": "text/event-block-5.jsonl", "rows": 39},
+    "event_block_6": {"path": "text/event-block-6.jsonl", "rows": 10},
+    "ending_1_24": {"path": "text/ending-24.jsonl", "rows": 24},
+    "event_block_2_korean": {"path": "text/event-block-2-korean.jsonl", "rows": 1653},
+    "event_block_3_korean": {"path": "text/event-block-3-korean.jsonl", "rows": 984},
+    "event_block_4_korean": {"path": "text/event-block-4-korean.jsonl", "rows": 811},
+    "event_block_5_korean": {"path": "text/event-block-5-korean.jsonl", "rows": 1381},
+    "event_block_6_korean": {"path": "text/event-block-6-korean.jsonl", "rows": 411},
+    "gameover_fixed_1_15": {"path": "text/gameover-fixed.jsonl", "rows": 15},
+    "gameover_scroll_1_35": {"path": "text/gameover-scroll.jsonl", "rows": 35}
+  }
+}

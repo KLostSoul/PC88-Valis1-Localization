@@ -1,0 +1,27 @@
+{
+  "source_docx": "/mnt/data/Valis_third_event_verification_table_0001-0985_KOR_260528(1).docx",
+  "output_docx": "/mnt/data/Valis_third_event_verification_table_0001-0984_KOR_FINAL_RENUMBERED_PATCHED_v3.docx",
+  "audit_csv": "/mnt/data/Valis_third_event_0001-0984_KOR_FINAL_RENUMBERED_PATCHED_v3_audit.csv",
+  "body_range": "0x9680~0x9E6F",
+  "body_length_bytes": 2032,
+  "terminator_expected": "0x9E70=0F",
+  "stats": {
+    "data_rows": 984,
+    "character_rows": 886,
+    "control_rows": 98,
+    "orange_hangul_speech_rows": 128,
+    "green_hangul_general_rows": 476,
+    "punctuation_or_space_rows": 282,
+    "left_quote_88_22_rows": 0,
+    "right_quote_98_22_rows": 0,
+    "blank_original_seq_live_rows": 0,
+    "deleted_or_blank_rows_ignored": 0,
+    "final_character_slots": 886
+  },
+  "verification": {
+    "bad_rule_count": 0,
+    "bad_rule_rows": [],
+    "unknown_count": 0,
+    "unknown_rows": []
+  }
+}

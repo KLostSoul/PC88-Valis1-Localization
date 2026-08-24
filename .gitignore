@@ -1,23 +1,24 @@
-# Do not accidentally commit original or derived game data.
+# Copyrighted/user-supplied inputs and local-only analysis material.
 *.d88
-*.rom
 *.D88
+*.rom
 *.ROM
 *.ips
-*.bin
-*.img
-*.iso
-**/original_bundles/
-**/raw/
-**/extracted/
-**/render/
-build/
-repro_out/
-local_inputs/
-source_build_inputs_20260824/
-*.pyc
-__pycache__/
-
-# The only intentionally versioned archive is the copyright-safe analysis bundle.
+*.IPS
 *.zip
-!evidence/Valis_Block1_정리본_2026-08-24_copyright-safe.zip
+*.ZIP
+upload/
+reference_work_*/
+nested_extract_*/
+analysis/local_only/
+analysis/quarantine/
+source/glyphs_local/
+source/reference/
+
+# Generated outputs and logs.
+build/*
+!build/.gitkeep
+*.bin
+*.log
+__pycache__/
+.pytest_cache/

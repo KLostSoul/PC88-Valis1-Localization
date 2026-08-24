@@ -1,0 +1,25 @@
+; index=0474
+; syllable=넣
+; unicode=U+B123
+; source_file=glyph_0474_U+B123_slot3705_tok90E7_off1CF20.bmp
+; rom_offset=0x1CF20
+; donor_region=KANJI/HANJA
+; status=PENDING_USER_EDIT
+; rule: ■ = ON/black, □ = OFF/white
+; exactly 16 rows below, exactly 16 chars per row
+□□□□□□□□□□□□■□□□
+□□□■□□□□□□□□■□□□
+□□□■□□□□□□□□■□□□
+□□□■□□□□□□□□■□□□
+□□□■□□□□□□■■■□□□
+□□□■□□□□□□□□■□□□
+□□□■□□□□□□□□■□□□
+□□□■■■■■■■□□■□□□
+□□□□□□□□□■□□□□□□
+□□□□□□□□□■□□□□□□
+□□□□□□■■■■■■■□□□
+□□□□□□□□■■■□□□□□
+□□□□□□□■□□□■□□□□
+□□□□□□□■□□□■□□□□
+□□□□□□□■□□□■□□□□
+□□□□□□□□■■■□□□□□

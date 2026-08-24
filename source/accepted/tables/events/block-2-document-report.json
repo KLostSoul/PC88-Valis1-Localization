@@ -1,0 +1,24 @@
+{
+  "source_docx": "/mnt/data/Valis_second_event_1-1654_KOR_260528(1).docx",
+  "output_docx": "/mnt/data/Valis_second_event_1-1653_KOR_FINAL_RENUMBERED_ORANGE_SPEECH_QUOTE8822_9822.docx",
+  "body_range": "0x9680~0xA4F4",
+  "body_length_bytes": 3701,
+  "terminator_expected": "0xA4F5=0F",
+  "stats": {
+    "data_rows": 1653,
+    "character_rows": 1471,
+    "control_rows": 182,
+    "orange_hangul_speech_rows": 702,
+    "green_hangul_general_rows": 278,
+    "punctuation_or_space_rows": 491,
+    "left_quote_88_22_rows": 10,
+    "right_quote_98_22_rows": 10,
+    "final_character_slots": 1471
+  },
+  "verification": {
+    "bad_rule_count": 0,
+    "unknown_count": 0,
+    "left_quote_value": "88 22",
+    "right_quote_value": "98 22"
+  }
+}

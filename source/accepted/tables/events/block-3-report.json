@@ -1,0 +1,53 @@
+{
+  "purpose": "Block 3 final Korean patch v3 after row deletion recalculation from 984-row document.",
+  "input_d88": "/mnt/data/Mugen Senshi Valis Disk A(7).d88",
+  "input_docx": "/mnt/data/Valis_third_event_verification_table_0001-0984_KOR_FINAL_RENUMBERED_PATCHED_v3.docx",
+  "output_d88": "/mnt/data/Mugen_Senshi_Valis_Disk_A_block3_FINAL_0001-0984_KOR_RENUMBERED_v3_2026-05-28.d88",
+  "ips": "/mnt/data/Valis_DiskA_block3_FINAL_0001-0984_KOR_RENUMBERED_v3_2026-05-28.ips",
+  "changes_csv": "/mnt/data/Valis_DiskA_block3_FINAL_0001-0984_KOR_RENUMBERED_v3_changes_2026-05-28.csv",
+  "runtime_range_written": "0x9680~0x9E70",
+  "body_runtime_range": "0x9680~0x9E6F",
+  "terminator": "0x9E70=0F",
+  "decoded_bytes_written": 2033,
+  "document_validation": {
+    "data_rows": 984,
+    "character_rows": 886,
+    "control_rows": 98,
+    "orange_hangul_speech_rows": 128,
+    "nonorange_hangul_general_rows": 476,
+    "punctuation_or_space_rows": 282,
+    "bad_doc_rule_count": 0,
+    "unknown_count": 0,
+    "blank_original_seq_live_rows": 0,
+    "deleted_or_blank_rows_ignored": 0
+  },
+  "payload_map": [
+    {
+      "runtime": "0x9680~0x9A7F",
+      "payload": "0x1BB00~0x1BEFF",
+      "key": "0x29"
+    },
+    {
+      "runtime": "0x9A80~0x9E7F",
+      "payload": "0x1BF10~0x1C30F",
+      "key": "0x29"
+    }
+  ],
+  "changes": {
+    "changed_byte_count": 1934,
+    "changed_records_count": 1934,
+    "min_changed_offset": "0x1BB00",
+    "max_changed_offset": "0x1C30F",
+    "outside_payload_change_count": 0
+  },
+  "verification": {
+    "decoded_after_matches_document_stream": true,
+    "mismatch_count": 0,
+    "only_declared_payload_segments_changed": true,
+    "file_size_unchanged": true
+  },
+  "file_size_original": 414992,
+  "file_size_output": 414992,
+  "sha256_original": "ae9e0d57219763cc575e66d38e92c78e7f3fc7a6acdeba0e5f13d7f7dd920a44",
+  "sha256_output": "e604f2d439f5ed7efbae109a0688f637d56537b4d1ae31560281819141ae80cc"
+}

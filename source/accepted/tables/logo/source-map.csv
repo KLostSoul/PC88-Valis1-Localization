@@ -1,0 +1,7 @@
+﻿target,ram_source,size,edit_png,encoder,notes
+VALIS_LOGO_5D_red_body,2800~4166,6503 bytes total,edit_layers/VALIS_5D_red_body_640x119_EDIT_1x.png,061F,"5D red body plane, row-interleaved with 5E"
+VALIS_LOGO_5E_shadow_mask,2800~4166,6503 bytes total,edit_layers/VALIS_5E_black_shadow_mask_640x119_EDIT_1x.png,061F,"5E black shadow/mask plane, not NOT(5D)"
+MUGEN_FINAL_5C,4405~47E2,990 bytes total,edit_layers/MUGEN_FINAL_5C_200x24_EDIT_1x.png,061F,final fixed 5C plane
+MUGEN_FINAL_5D,4405~47E2,990 bytes total,edit_layers/MUGEN_FINAL_5D_200x24_EDIT_1x.png,061F,final fixed 5D plane
+MUGEN_FINAL_5E,4405~47E2,990 bytes total,edit_layers/MUGEN_FINAL_5E_200x24_EDIT_1x.png,061F,final fixed 5E plane
+MUGEN_MOVEMENT_05CE,4167~4404,670 bytes,edit_layers/MUGEN_MOVEMENT_05CE_columns_520x24_EDIT_1x.png,05CE,65 vertical slices x 24 rows
