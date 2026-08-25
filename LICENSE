@@ -1,21 +1,13 @@
-PC88-Valis1-Localization-Build Licensing Terms
+MIT License
 
 Copyright (c) 2026 KLostSoul
-
-1. Original software code
--------------------------
-
-The original software code, build scripts, and tests authored for this
-repository are licensed under the MIT License below.
-
-MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is furnished
-to do so, subject to the following conditions:
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
@@ -27,44 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-2. Original project materials: attribution permission
-----------------------------------------------------
-
-For documentation, analysis notes, build metadata, original tables, original
-project text, and other original material authored for this repository, to the
-extent that KLostSoul owns the applicable rights, permission is granted to use,
-copy, modify, adapt, and redistribute the material, including modified versions,
-for commercial or non-commercial purposes, provided that:
-
-- the original source is clearly credited as
-  "PC88-Valis1-Localization-Build by KLostSoul" and the repository URL or an
-  equivalent source reference is provided;
-- this licensing notice is retained with redistributed copies or substantial
-  portions; and
-- modified versions clearly state that they have been modified from the
-  original project.
-
-No separate permission is required for modification or redistribution when the
-above attribution conditions are followed.
-
-3. Third-party and game-derived material
-----------------------------------------
-
-Nothing in this license grants rights that KLostSoul does not own.
-
-Rights in the original game, original game program/data, ROM or disk-image
-contents, original game text, characters, artwork, screenshots, logos, fonts,
-glyphs, music, trademarks, and other third-party material remain with their
-respective rights holders.
-
-Where this repository contains translations, analysis, tables, patches, or
-other material derived from the original game, the permission in section 2
-applies only to the original contribution made for this project to the extent
-KLostSoul has rights in that contribution. It does not grant permission to use
-any underlying third-party copyrighted material beyond what applicable law or
-the relevant rights holder permits.
-
-Original commercial game D88/ROM images are not licensed or distributed under
-these terms. Users are responsible for supplying any required original media
-lawfully.
